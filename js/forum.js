@@ -108,7 +108,7 @@ $(function (){
     });
 
     //获取顶置的帖子
-    $(window).load('config/show_forum.php',{'game_name':game_name,'show_type':'overhead'},function (responseText){
+    $(window).load('config/show_forum.php',{'game_id':game_id,'show_type':'overhead'},function (responseText){
         var json = $.parseJSON(responseText);
         add_list($('.forum_body-left ul.overHead'),json);
 
@@ -159,7 +159,7 @@ $(function (){
         }else{
             types='';
         }
-        $(window).load('config/show_forum.php',{'game_name':game_name,'type':types,show_type:'forum'},function (responseText){
+        $(window).load('config/show_forum.php',{'game_id':game_id,'type':types,show_type:'forum'},function (responseText){
             var json=$.parseJSON(responseText);
             var list_num = 10;
             var count = json[0].count;
@@ -251,7 +251,7 @@ $(function (){
         });
 
         function page_event(_this,index,page_num){
-            $(window).load('config/show_forum.php',{'game_name':game_name,'limit':index,'type':types,show_type:'forum'},function (responseText){
+            $(window).load('config/show_forum.php',{'game_id':game_id,'limit':index,'type':types,show_type:'forum'},function (responseText){
                 var json=$.parseJSON(responseText);
                 add_list($(_this).parent().prev(),json);
                 //点击时，改变上下页的title
@@ -272,7 +272,7 @@ $(function (){
         var overHead = obj.hasClass('overHead')?'置顶':'';
         var html='';
         for(var i=0;i<json.length;i++){
-            html+='<li><div class="user_img" style="background:url(images/'+json[i].top_img+') center center;background-size:60px 60px;"></div><div class="user_info"><h3  forum_id="'+json[i].id+'"  user_id="'+json[i].user_id+'"><a href="forum_detail.php?forum_id='+json[i].id+'&game_name='+game_name+'&user_id='+json[i].user_id+'" target="_blank">'+json[i].title+'</a><span>'+overHead+'</span></h3><ul class="username_date"><li><a href="home.php?user_id='+json[i].user_id+'" target="_blank">'+json[i].username+'</a></li><li>'+json[i].date+'</li><li>    <i class="s_view"></i>'+json[i].replay+'</li><li><i class="s_real"></i>'+json[i].comment+'</li><div class="clear_float"></div></ul></div><div class="clear_float"></div></li>';
+            html+='<li><div class="user_img" style="background:url(images/'+json[i].top_img+') center center;background-size:60px 60px;"></div><div class="user_info"><h3  forum_id="'+json[i].id+'"  user_id="'+json[i].user_id+'"><a href="forum_detail.php?forum_id='+json[i].id+'&game_id='+game_id+'&user_id='+json[i].user_id+'" target="_blank">'+json[i].title+'</a><span>'+overHead+'</span></h3><ul class="username_date"><li><a href="home.php?user_id='+json[i].user_id+'" target="_blank">'+json[i].username+'</a></li><li>'+json[i].date+'</li><li>    <i class="s_view"></i>'+json[i].replay+'</li><li><i class="s_real"></i>'+json[i].comment+'</li><div class="clear_float"></div></ul></div><div class="clear_float"></div></li>';
         }
         //点击增加阅读数
         obj.html(html).find('li h3').click(function (){
@@ -281,7 +281,7 @@ $(function (){
             $(window).load('config/show_forum.php',{
                 'show_type':'overhead',
                 'replay':'true',
-                'game_name':game_name,
+                'game_id':game_id,
                 'forum_id':id
             },function (responseText){
                 if(responseText>0){
