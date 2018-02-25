@@ -69,7 +69,6 @@
             <i><img src="images/tou.png"><span>签到</span></i>
             <p>签到人数：<?php echo $info['sign_in']?>人</p>
             <div class="clear_float"></div>
-            <div class="clear_float"></div>
         </div><!--sign_in-->
 
         <!--发帖-->
