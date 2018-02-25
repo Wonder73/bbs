@@ -48,7 +48,6 @@
                 <i class="lastHead"></i>最后发表
             </li>
             <div class="clear_float"></div>
-            <div class="clear_float"></div>
         </ul>
         <!--顶置的4条数据-->
         <ul class="overHead forum_title">
