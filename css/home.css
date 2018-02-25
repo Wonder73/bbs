@@ -1,0 +1,991 @@
+section{
+    margin-top:-10px;
+}
+
+/*home页面的头部就是一张背景图*/
+.home_top{
+    position:relative;
+    width:100%;
+    height:350px;
+    background:url(../images/defaultbannar.png) no-repeat;
+    background-size:cover;
+}
+.home_top .home_top-ul{
+    position:absolute;
+    bottom:10px;
+    right:0;
+    left:0;
+    color:#999;
+}
+.home_top .home_top-ul li{
+    position:relative;
+    float:left;
+    width:20%;
+    font-size:14px;
+    text-align:center;
+    letter-spacing:4px;
+}
+.home_top .home_top-ul li p:last-child{
+    font-size:24px;
+    line-height:1.5;
+    color:#fff;
+    letter-spacing:normal;
+}
+.home_top .home_top-ul li:nth-child(3),.home_top .home_top-ul li:nth-child(4){
+    float:right;
+}
+.home_top .home_top-ul li:nth-child(2),.home_top .home_top-ul li:nth-child(3){
+    border:none;
+}
+.home_top .home_top-ul li:nth-child(1):before,.home_top .home_top-ul li:nth-child(4):before{
+    content: "";
+    width: 1px;
+    height: 32px;
+    background: #999;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -16px;
+}
+
+/*home的中间，两个部分一个是用户的信息，一个是导航条*/
+.home_middle{
+    position:relative;
+    width:100%;
+    height:400px;
+    background:#fff;
+}
+.home_middle .home_middle-user_info{
+    position:absolute;
+    right:0;left:0;
+    top:-65px;
+    margin: 0 auto;
+    padding:0 10px;
+    width:300px;
+    min-height:100px;
+    text-align:center;
+}
+/*头像*/
+.home_middle .home_middle-user_info .top_img{
+    display:block;
+    margin:0 auto;
+    width:120px;
+    height:120px;
+    border:5px solid #fff;
+    border-radius:65px;
+    /*background:url(../images/avatar.gif);*/
+}
+/*用户名*/
+.home_middle .home_middle-user_info .username{
+    margin:20px;
+    font-size:24px;
+}
+/*经验条*/
+.home_middle .home_middle-user_info .lv{
+    margin:-12px auto 0 auto;
+    width:60%;
+}
+.home_middle .home_middle-user_info .lv li{
+    float:left;
+}
+.home_middle .home_middle-user_info .lv li:nth-child(1){
+    padding: 0 10px;
+}
+.home_middle .home_middle-user_info .lv li:nth-child(2){
+    overflow:hidden;
+    position:relative;
+    margin:6px 0 0 0;
+    width:120px;
+    height:8px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    cursor:pointer;
+}
+.home_middle .home_middle-user_info .lv li:nth-child(2) span{
+    position:absolute;
+    top:0;
+    left:0;
+    width:50%;
+    height:100%;
+    background:#79bc1f;
+    border-radius:8px;
+}
+/*个性签名*/
+.home_middle .home_middle-user_info .description{
+    margin:16px 0;
+    color:#666;
+}
+
+/*编辑信息和修改头像*/
+.home_middle .home_middle-user_info .edit{
+
+}
+.home_middle .home_middle-user_info .edit li{
+    float:left;
+    padding:5px 0;
+    width:120px;
+    border:1px solid #999;
+    border-radius:4px;
+    cursor:pointer;
+}
+.home_middle .home_middle-user_info .edit li:nth-child(1){
+    margin:0 20px;
+    background:#ffd100;
+    border-color:#ffd100;
+}
+/*点赞*/
+.home_middle .home_middle-user_info img.like{
+    position:absolute;
+    top:120px;
+    right:80px;
+    width:25px;
+    height:25px;
+    cursor:pointer;
+}
+
+/*导航条*/
+.home_middle .home_middle-nav{
+    position:absolute;
+    bottom:0;
+    left:0;right:0;
+    margin: 0 auto;
+    width:280px;
+    /*width:490px;*/
+    /*border:1px solid #000;*/
+}
+.home_middle .home_middle-nav li{
+    float:left;
+    margin:0 30px;
+    padding:16px 0;
+    font-size:16px;
+    color:#999;
+    cursor:pointer;
+}
+.home_middle .home_middle-nav li.highlight{
+    border-bottom:2px solid #555;
+    color:#555;
+}
+.home_middle .home_middle-nav li:hover{
+    border-bottom:2px solid #555;
+    color:#555;
+}
+
+/*主要内容*/
+.home_bottom{
+    margin:20px auto;
+    min-height:100px;
+    background:#fff;
+    border:1px solid #eee;
+    border-radius:8px;
+    box-shadow:2px 2px 8px rgba(0,0,0,0.1);
+}
+
+.home_bottom .home_bottom-user_info{
+    margin:20px auto;
+    width:50%;
+    font-size:14px;
+    line-height:2;
+}
+.home_bottom .home_bottom-user_info li{
+    color:#777;
+}
+.home_bottom .home_bottom-user_info li span{
+    color:#333;
+}
+.home_bottom .home_bottom-user_info li:first-child{
+    font-size:18px;
+    letter-spacing:2px;
+    border-bottom:1px solid #ccc;
+    color:#333;
+}
+.home_bottom .edit{
+    display:block;
+    margin:10px auto;
+    padding:5px;
+    width:30%;
+    text-align:center;
+    background:#ffd100;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+
+/*显示帖子*/
+.home_bottom .home_bottom-forum{
+    padding:20px;
+    width:100%;
+}
+.home_bottom .home_bottom-forum tr{
+}
+.home_bottom .home_bottom-forum tr:nth-child(1) td{
+    color:#888;
+    font-size:14px;
+    padding:8px 5px;
+}
+.home_bottom .home_bottom-forum tr:nth-child(1) td:nth-child(2){
+    text-align:center;
+}
+.home_bottom .home_bottom-forum td{
+    padding:16px 5px;
+    width:10%;
+    text-align:center;
+    border-bottom:1px solid #ccc;
+}
+
+.home_bottom .home_bottom-forum td:nth-child(1){
+    width:8%;
+}
+.home_bottom .home_bottom-forum td:nth-child(2){
+    width:40%;
+    text-align:left;
+    cursor:pointer;
+}
+.home_bottom .home_bottom-forum td:nth-child(5){
+    width:12%;
+}
+.home_bottom .home_bottom-forum td input{
+    vertical-align: middle;
+    margin-right:5px;
+    cursor:pointer;
+}
+.home_bottom .home_bottom-forum td:nth-child(6),.home_bottom .home_bottom-forum td:nth-child(7),.home_bottom .home_bottom-forum td:nth-child(8){
+    width:3%;
+    cursor:pointer;
+    text-decoration:underline;
+}
+.home_bottom .home_bottom-forum td:nth-child(2):hover,.home_bottom .home_bottom-forum td:nth-child(6):hover,.home_bottom .home_bottom-forum td:nth-child(7):hover{
+    color:#79bc1f;
+}
+
+.home_bottom .del_select,.home_bottom .user_del_select,.add_game,.game_del_select{
+    margin:0 0 0 20px;
+    padding:4px 16px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    cursor:pointer;
+}
+.home_bottom .del_select:active,.home_bottom .user_del_select:active,add_game:active,.game_del_select:active{
+    background:#ccc;
+    border:1px inset #ccc;
+}
+/*选项列表*/
+ul.list{
+    margin:10px;
+}
+ul.list li{
+    float:left;
+    margin:2px;
+    padding:4px 12px;
+    color:#666;
+    border:1px solid #ccc;
+    border-radius:4px;
+    cursor:pointer;
+}
+ul.list li.highlight{
+    background:#79bc1f;
+    color:#fff;
+    border:1px solid #79bc1f;
+}
+ul.list li:hover{
+    background:#eee;
+}
+ul.list li.highlight:hover{
+    background:#79bc1f;
+}
+ul.list li:last-child{
+    border:none;
+    padding:5px 0;
+    cursor:default;
+}
+ul.list li:last-child:hover{
+    background:none;
+}
+ul.list li.jump_li{
+    border:none;
+    padding:0;
+    cursor:default;
+}
+ul.list li.jump_li:hover{
+    background:none;
+}
+ul.list li.jump_li input{
+    margin:0 2px;
+    width:40px;
+    height:30px;
+    border:1px solid #ccc;
+    border-radius:4px;
+    color:#666;
+}
+ul.list li.jump_li input:first-child{
+    text-indent:8px;
+}
+ul.list li.jump_li input:last-child{
+    cursor:pointer;
+}
+ul.list li.jump_li input:last-child:active{
+    background: #d8d8d8;
+}
+
+
+
+/*编辑资料的框框*/
+.edit_info{
+    display:none;
+    z-index:9999999;
+    position:fixed;
+    top:0;
+    width:550px;
+    min-height:300px;
+    border:1px solid #eee;
+    border-radius:4px;
+    background:#fff;
+}
+.edit_info h2{
+    padding:10px 0;
+    color:#666;
+    text-align: center;
+    background-color: #fafafa;
+    cursor:move;
+}
+.edit_info .close{
+    position:absolute;
+    right:10px;
+    top:12px;
+    width:20px;
+    height:20px;
+    background:url(../images/close.gif) center;
+    background-position-y:-125px;
+    background-size: 30px;
+    cursor:pointer;
+    transition:all 0.3s linear;
+}
+.edit_info .close:hover{
+    background-position-y:-95px;
+    transition:all 0.3s linear;
+}
+.edit_form{
+     display:block;
+ }
+.edit_possword{
+    display:none;
+}
+.privacy{
+    display:none;
+}
+#edit_inputs,#password_inputs{
+    border: none;
+    padding:10px 0 0 10px;
+    border-radius:4px 4px 0 0;
+}
+#edit_inputs label,#password_inputs label{
+    margin:0 10px 0 0;
+}
+#edit_inputs input,#password_inputs input{
+    margin:5px 0;
+    padding:6px 0;
+    width: 300px;
+    text-indent:8px;
+    letter-spacing: 2px;
+    border:1px solid #ccc;
+}
+#edit_inputs input.radio{
+    margin:10px;
+    width:auto;
+    vertical-align: middle;
+}
+
+#edit_but,#password_but,#privacy_but{
+    border: none;
+    height: 40px;
+}
+
+#edit_but input,#password_but input,#privacy_but input{
+    display: block;
+    border: none;
+    border-radius: 2px;
+    margin:10px auto;
+    padding: 6px 80px;
+    font-size: 14px;
+    color: #fff;
+    letter-spacing: 2px;
+    background: #79bc1f;
+    cursor: pointer;
+}
+#edit_inputs textarea{
+    width:300px;
+    height:80px;
+    border:1px solid #ccc;
+    text-indent:8px;
+    resize:none;
+}
+/*验证码*/
+#password_inputs input.captcha{
+    width:100px;
+}
+#password_inputs #code_img3{
+    margin:5px 10px;
+    vertical-align:middle;
+}
+#password_inputs a{
+    cursor:pointer;
+    user-select:none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+/*错误信息*/
+#edit_inputs .nickname_error2,#password_inputs .con_password_error2,#edit_inputs .email_error2,#edit_inputs .phone_error2,#password_inputs .password_error2,#password_inputs .captcha_error2{
+    display:none;
+    position:absolute;
+    left:70px;
+    top:136px;
+    padding:5px 10px;
+    z-index:99;
+    background:#fff;
+    border:1px solid #ccc;
+    border-radius:4px;
+    box-shadow:2px 2px 3px rgba(0,0,0,0.3);
+    color:#f14537;
+}
+#edit_inputs .nickname_error2:before,#password_inputs .con_password_error2:before,#edit_inputs .email_error2:before,#edit_inputs .phone_error2:before,#password_inputs .password_error2:before,#password_inputs .captcha_error2:before{
+    position:absolute;
+    top:-9px;
+    left:14px;
+    content:' ';
+    display:block;
+    width:14px;
+    height:14px;
+    background:#fff;
+    border:1px solid #ccc;
+    border-right:none;
+    border-bottom:none;
+    border-radius: 2px;
+    transform: rotate(45deg);
+}
+/*邮箱位置*/
+#edit_inputs .email_error2{
+    top:294px;
+}
+/*电话号码位置*/
+#edit_inputs .phone_error2{
+    top:334px;
+}
+
+/*密码位置*/
+#password_inputs .password_error2{
+    top:136px;
+}
+/*密码位置*/
+#password_inputs .con_password_error2{
+    top:176px;
+}
+#password_inputs .captcha_error2{
+    top:220px;
+}
+/*密码的复杂程度*/
+.ver_password2{
+    display:none;
+    margin:0 90px;
+    padding:0 10px;
+    width:250px;
+    height:100px;
+    border:1px solid #ccc;
+    border-radius:4px;
+}
+.ver_password2 ul:nth-child(2){
+
+}
+.ver_password2 ul:nth-child(2) li{
+    padding:0 22px;
+    color:#666;
+    background:url(../images/info.png) no-repeat 0 center;
+}
+.ver_password2 ul:nth-child(2) li.ok{
+    background:url(../images/green.png) no-repeat 0 center;
+}
+.ver_password2 ul:nth-child(1){
+    margin:4px 8px;
+}
+.ver_password2 ul:nth-child(1) li{
+    float:left;
+    margin:2px;
+    width:30%;
+    height:10px;
+    background:#ccc;
+    border-radius:30px;
+}
+
+
+#inputs_2 input.error2,#inputs input.error2{
+    border:1px solid #f14537;
+}
+
+/*输出有效*/
+#edit_inputs .nickname_suc2,#password_inputs .password_suc2,#password_inputs .con_password_suc2,#edit_inputs .email_suc2,#edit_inputs .phone_suc2{
+    display:none;
+    position:absolute;
+    top:106px;
+    right:140px;
+    width:18px;
+    height:18px;
+    background:url(../images/green.png) no-repeat;
+}
+/*密码位置*/
+#password_inputs .password_suc2{
+    top:106px;
+}
+/*确认密码位置*/
+#password_inputs .con_password_suc2{
+    top:150px;
+}
+
+/*邮箱位置*/
+#edit_inputs .email_suc2{
+    top:264px;
+}
+/*电话号码位置*/
+#edit_inputs .phone_suc2{
+    top:304px;
+}
+
+/*提示输入*/
+#edit_inputs .ver,#password_inputs .ver{
+    color:#79bc1f;
+}
+
+/*email的下拉列表*/
+#edit_inputs .email_slide2{
+    display:none;
+    position:absolute;
+    left:82px;
+    top:288px;
+    min-width: 20px;
+    min-height:100px;
+    background:#fafafa;
+    border:1px solid #ccc;
+    border-top:none;
+    border-radius:0 0 4px 4px;
+    z-index:100;
+}
+#edit_inputs .email_slide2 ul{
+    overflow: hidden;
+}
+#edit_inputs .email_slide2 ul li{
+    padding:2px 10px;
+    font-size:12px;
+    color:#666;
+    letter-spacing: 1px;
+    border-bottom:1px solid #eeeeee;
+    cursor:pointer;
+}
+#edit_inputs .email_slide2 ul li.select{
+    color:#79bc1f;
+    background:#eee;
+}
+/*密码的复杂程度*/
+.ver_password{
+    display:none;
+    margin:0 auto;
+    padding:0 10px;
+    width:250px;
+    height:100px;
+    border:1px solid #ccc;
+    border-radius:4px;
+}
+.ver_password ul:nth-child(2){
+
+}
+.ver_password ul:nth-child(2) li{
+    padding:0 22px;
+    color:#666;
+    background:url(../images/info.png) no-repeat 0 center;
+}
+.ver_password ul:nth-child(2) li.ok{
+    background:url(../images/green.png) no-repeat 0 center;
+}
+.ver_password ul:nth-child(1){
+    margin:4px 8px;
+}
+.ver_password ul:nth-child(1) li{
+    float:left;
+    margin:2px;
+    width:30%;
+    height:10px;
+    background:#ccc;
+    border-radius:30px;
+}
+
+/*隐私选项设置*/
+.privacy #privacy_inputs{
+    display:block;
+    width:70%;
+    margin:0 auto;
+    border:none;
+
+}
+.privacy .privacy_check{
+    width:16px;
+    height:16px;
+    vertical-align: middle;
+}
+.privacy label{
+    margin:0 20px 0 0;
+}
+
+/*选项卡，看要执行什么*/
+.edit_info .form_option{
+    margin:10px auto;
+    width:300px;
+}
+.edit_info .form_option li{
+    float:left;
+    width:90px;
+    color:#666;
+    text-align:center;
+    border:1px solid #ccc;
+    border-radius:4px 4px 0 0;
+    cursor:pointer;
+}
+.edit_info .form_option li.option{
+    border-bottom:none;
+}
+/*修改头像*/
+.alter_top_img{
+    display:none;
+    z-index:9999999;
+    position:fixed;
+    top:0;
+    width:550px;
+    min-height:300px;
+    border:1px solid #eee;
+    border-radius:4px;
+    background:#fff;
+    text-align:center;
+}
+.alter_top_img h2{
+    padding:10px 0;
+    color:#666;
+    text-align: center;
+    background-color: #fafafa;
+    cursor:move;
+}
+.alter_top_img .close{
+    position:absolute;
+    right:10px;
+    top:12px;
+    width:20px;
+    height:20px;
+    background:url(../images/close.gif) center;
+    background-position-y:-125px;
+    background-size: 30px;
+    cursor:pointer;
+    transition:all 0.3s linear;
+}
+.alter_top_img .close:hover{
+    background-position-y:-95px;
+    transition:all 0.3s linear;
+}
+.alter_top_img img{
+    margin:20px;
+    width:120px;
+    height:120px;
+    vertical-align: middle;
+}
+.alter_top_img img.img_two{
+    border-radius:60px;
+}
+.alter_top_img input{
+    cursor:pointer;
+    border:1px solid #ccc;
+}
+.alter_top_img label{
+    font-size:14px;
+}
+.alter_top_img input.file_but{
+    display: block;
+    border: none;
+    border-radius: 2px;
+    margin:10px auto;
+    padding: 6px 80px;
+    font-size: 14px;
+    color: #fff;
+    letter-spacing: 2px;
+    background: #79bc1f;
+    cursor: pointer;
+}
+
+/*发帖框*/
+.editor_msg{
+    display:none;
+    overflow:hidden;
+    position:fixed;
+    top:10%;
+    left:20%;
+    width:60%;
+    height:560px;
+    background:#fff;
+    border-radius:4px;
+    z-index:9999999;
+}
+.editor_msg .close{
+    position:absolute;
+    right:10px;
+    top:12px;
+    width:16px;
+    height:16px;
+    background:url(../images/close.gif) center;
+    background-position-y:-122px;
+    cursor:pointer;
+    transition:all 0.3s linear;
+}
+.editor_msg .close:hover{
+    background-position-y:-102px;
+    transition:all 0.3s linear;
+}
+.editor_msg h2{
+    margin:0 0 10px 0;
+    padding:10px 0;
+    letter-spacing: 2px;
+    text-align:center;
+    color:#666;
+    background:#eee;
+    cursor: move;
+    user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+}
+.editor_msg p{
+    margin:10px;
+    font-size:16px;
+}
+.editor_msg p span{
+    font-size:14px;
+    color:#666;
+}
+.editor_msg label{
+    margin:0 10px;
+    font-size:16px;
+}
+.editor_msg input.msg_title{
+    padding:6px;
+    width:70%;
+    font-size:14px;
+    border:1px solid #ccc;
+}
+.editor_msg .editor_msg-title{
+    margin:20px 10px 0 10px;
+    background:#eee;
+    border:1px solid #eee;
+}
+.editor_msg .editor_msg-centent{
+    margin:0 10px 0 10px;
+    height:60%;
+    border:1px solid #eee;
+}
+.editor_msg input.post_editor{
+    border:none;
+    border-radius:2px;
+    margin:10px 10px;
+    padding:5px 20px;
+    font-size:14px;
+    color:#fff;
+    letter-spacing: 2px;
+    background:#79bc1f;
+    cursor:pointer;
+    transition:all 0.2s linear;
+}
+.editor_msg input.post_editor:hover{
+    background:#f14537;
+    transition:all 0.2s linear;
+}
+
+
+/*留言的发表和查看*/
+div.post_msg{
+    margin:20px 0;
+    text-align:center;
+}
+div.post_msg input.con_message{
+    width:50%;
+    height:36px;
+    font-size:14px;
+    color:#444;
+    text-indent:8px;
+    border:1px solid #ccc;
+    border-radius:4px 0 0 4px;
+    border-right:none;
+}
+div.post_msg input.msg_but{
+    padding:9px 0;
+    width:10%;
+    height:38px;
+    font-size:14px;
+    color:#444;
+    border:1px solid #ccc;
+    cursor:pointer;
+    border-radius:0 4px 4px 0;
+}
+ul.message{
+    margin:50px auto;
+    width:80%;
+    border-top:1px solid #ccc;
+}
+ul.message li{
+    width:100%;
+    min-height:100px;
+    border-bottom:1px solid #ccc;
+}
+ul.message li img{
+    margin:10px;
+    float:left;
+    width:70px;
+    height:70px;
+    border-radius:60px;
+}
+ul.message li .msg_info{
+    float:left;
+    margin:10px 1%;
+    width:80%;
+}
+ul.message li .msg_info p:first-child{
+    margin:10px 0;
+}
+ul.message li .msg_info p:first-child span.username{
+    margin:0 1% 0 0;
+    font-size:14px;
+}
+ul.message li .msg_info p:first-child span.date{
+    color:#666;
+}
+
+/*授权*/
+/*修改头像*/
+.root{
+    display:none;
+    z-index:9999999;
+    position:fixed;
+    top:0;
+    width:550px;
+    min-height:150px;
+    border:1px solid #eee;
+    border-radius:4px;
+    background:#fff;
+    text-align:center;
+}
+.root h2{
+    padding:10px 0;
+    color:#666;
+    text-align: center;
+    background-color: #fafafa;
+    cursor:move;
+}
+.root .close{
+    position:absolute;
+    right:10px;
+    top:12px;
+    width:20px;
+    height:20px;
+    background:url(../images/close.gif) center;
+    background-position-y:-125px;
+    background-size: 30px;
+    cursor:pointer;
+    transition:all 0.3s linear;
+}
+.root .close:hover{
+    background-position-y:-95px;
+    transition:all 0.3s linear;
+}
+.root p{
+    font-size:14px;
+    margin:10px 0;
+}
+.root label{
+    font-size:14px;
+}
+.root select{
+    width:50%;
+    height:30px;
+    cursor:pointer;
+    border:1px solid #ccc;
+    border-radius:4px;
+}
+.root input.file_but{
+    display: block;
+    border: none;
+    border-radius: 2px;
+    margin:10px auto;
+    padding: 6px 80px;
+    font-size: 14px;
+    color: #fff;
+    letter-spacing: 2px;
+    background: #79bc1f;
+    cursor: pointer;
+}
+
+.game{
+    display:none;
+    z-index:9999999;
+    position:fixed;
+    top:0;
+    width:550px;
+    min-height:150px;
+    border:1px solid #eee;
+    border-radius:4px;
+    background:#fff;
+}
+.game h2{
+    margin:0 0 10px 0;
+    padding:10px 0;
+    color:#666;
+    text-align: center;
+    background-color: #fafafa;
+    cursor:move;
+}
+.game .close{
+    position:absolute;
+    right:10px;
+    top:12px;
+    width:20px;
+    height:20px;
+    background:url(../images/close.gif) center;
+    background-position-y:-125px;
+    background-size: 30px;
+    cursor:pointer;
+    transition:all 0.3s linear;
+}
+.game .close:hover{
+    background-position-y:-95px;
+    transition:all 0.3s linear;
+}
+.game label{
+    margin:0 20px;
+    font-size:14px;
+    color:#666;
+}
+.game input{
+    margin:5px 0;
+    padding:6px 0;
+    width: 300px;
+    text-indent:8px;
+    letter-spacing: 2px;
+    border:1px solid #ccc;
+}
+.game textarea{
+    width:300px;
+    height:100px;
+    resize:none;
+    border:1px solid #ccc;
+}
+.game input.game_but{
+    display: block;
+    border: none;
+    border-radius: 2px;
+    margin:10px auto;
+    padding: 6px 80px;
+    font-size: 14px;
+    color: #fff;
+    letter-spacing: 2px;
+    background: #79bc1f;
+    cursor: pointer;
+}

@@ -1,0 +1,267 @@
+/*响应式*/
+@media only screen and (max-width: 1920px) {
+    /*.document-width{width:80%;}*/
+
+    /*发帖的图片*/
+    .forum_body-right .post_msg img{width:55%;}
+}
+
+@media only screen and (max-width: 1440px) {
+    .document-width{width:90%;}
+    /*发帖的图片*/
+    .forum_body-right .post_msg img{width:75%;}
+    .content li{margin:0;}
+
+    /*热门评论*/
+    .zj_1{width:250px;}
+}
+
+@media only screen and (max-width: 1280px) {
+    .content li{margin:2%;}
+    .content {width:80%;}
+    /*热门评论*/
+    .zj_1{width:200px;}
+}
+
+@media only screen and (max-width: 1250px) {}
+
+@media only screen and (max-width: 1150px) {
+    /*发帖的图片*/
+    .forum_body-right .sign_in i{width:40%;}
+    .forum_body-right .post_msg img{width:80%;}
+
+    /*评论信息的宽度*/
+    .forum_body-comment>ul.comment>li div.comment_info{width:80%;}
+}
+
+@media only screen and (max-width: 1120px) {
+
+    /*签到*/
+    .forum_body-right .sign_in i{width:100%;padding:0 10% 0 0;}
+    .forum_body-right .sign_in i img{width:30px;}
+    .forum_body-right .sign_in p{display:none;}
+    /*发帖*/
+    .forum_body-right .post_msg img{width:100%;}
+
+    .content li{margin:2%;}
+    .content {width:90%;}
+
+    .top_big2 .search{width:14%;}
+}
+
+@media only screen and (max-width: 1070px) {
+    /*导航条*/
+    ul.pc li{padding:0 10px;}
+
+}
+
+@media only screen and (max-width: 1050px){}
+
+@media only screen and (max-width: 1020px) {}
+
+@media only screen and (max-width: 1000px) {
+    .document-width{width:100%;}
+
+    /*楼主信息*/
+    .forum_body-left ul.forum_title>li .user_info{width:80%;}
+    /*帖子的电赞*/
+    .forum_body-detail .end_opp ul{width:40%;}
+    /*发帖框*/
+    .editor_msg{width:80%;}
+
+    /*用户信息下拉列表*/
+    .login_down{left:-100%;}
+    /*轮播图*/
+    .index_top{height:400px;}
+
+    .top_big2 .search{width:9%;}
+}
+
+@media only screen and (max-width: 900px) {
+    /*导航条*/
+    .top_big2 ul li{padding:0 2%}
+    .search{width:20%;}
+
+    /*游戏*/
+    .content li{margin:1%;}
+    .content {width:100%;}
+
+}
+
+@media only screen and (max-width: 850px){
+    /*导航条*/
+    .top_big2 ul li{padding:0 1%}
+    .search{width:16%;}
+    /*轮播图*/
+    .index_top{height:380px;}
+}
+
+@media only screen and (max-width: 800px) {
+    /*游戏*/
+    .content li{margin:0.5%;}
+}
+
+@media only screen and (max-width: 750px) {
+
+    /*签到*/
+    .forum_body-right .sign_in p{display:none;}
+    .forum_body-right .sign_in i{width:100%;padding:0 10% 0 0; margin:0 auto;}
+    .forum_body-right .sign_in i img{width:20%;}
+    .forum_body-right .sign_in i span{display:inline-block;}
+    /*发帖的图片*/
+    .forum_body-right .post_msg img{width:100%;}
+
+    /*导航条*/
+    .top_big2 .pc{display:none;}
+    .top_big2 .menu{display:block;}
+
+    /*轮播图*/
+    .index_top{height:280px;}
+    /*游戏*/
+    .content li{margin:0;}
+
+    /*所有游戏*/
+    .game_list ul.game_title>li .game_info{width:60%;}
+
+}
+
+@media only screen and (max-width: 720px) {
+    /*发帖框*/
+    .editor_msg{width:90%;}
+
+    /*游戏*/
+    .content li{width:100%;}
+}
+
+@media only screen and (max-width: 700px) {
+    .forum_body-left{width:100%;}
+    .forum_body-right,.forum_body-info{float:left;width:100%;}
+    /*发帖的图片*/
+    .forum_body-right .sign_in p{display:inline-block;}
+    .forum_body-right .sign_in i{width:30%;height:100%;padding:1% 0; margin:0 10px; font-size:20px;float:left;}
+    .forum_body-right .sign_in i img{width:20px;float:left;}
+    .forum_body-right .sign_in i span{display:inline-block;}
+    .forum_body-right .post_msg img{width:100%;}
+    /*互相挤到下面*/
+    .forum_body-right .post_msg{float:left;width:47%;vertical-align: middle;}
+    .forum_body-right .sign_in{float:left;width:47%; margin:16px 1% 16px 0}
+    /*发帖框*/
+    .editor_msg{width:100%;height:100%;}
+    .w-e-menu{display:inline-block;}
+    .w-e-toolbar{display:block;}
+
+    /*轮播图*/
+    .index_top{height:280px;}
+    .lunBo .bbs_info{display:none;}
+    .lunBo .lunBo_img{width:84%;}
+}
+
+@media only screen and (max-width: 680px) {}
+
+@media only screen and (max-width: 650px) {
+
+    /*留言板*/
+    ul.message{width:100%;}
+   /* div.post_msg input.con_message{width:50%;height:36px;font-size:14px;color:#444;text-indent:8px;border:1px solid #ccc;border-radius:4px 0 0 4px;border-right:none;}
+    */div.post_msg input.msg_but{width:20%;}
+      /*home导航条*/
+    .home_middle .home_middle-nav{margin-left:0;}
+}
+
+@media only screen and (max-width: 620px) {}
+
+@media only screen and (max-width: 600px) {
+    /*添加游戏*/
+    .game{width:100%;}
+}
+
+@media only screen and (max-width: 550px) {
+    .forum_body-detail .end_opp ul{width:50%;}
+    /*权限*/
+    .root{width:100%;}
+}
+
+@media only screen and (max-width: 500px) {
+    /*发帖*/
+    .forum_body-right .post_msg{;width:100%}
+    .forum_body-right .post_msg img{width:50%;}
+    /*签到*/
+    .forum_body-right .sign_in{width:100%}
+    /*点赞*/
+    .forum_body-detail .end_opp ul{width:100%;}
+    /*小评论*/
+    .forum_body-comment ul.comment>li div.comment_info div.small_comment>ul{width:90%;}
+
+    /*留言板*/
+    ul.message li .msg_info{width:70%;}
+}
+
+@media only screen and (max-width: 480px) {
+    /*登录框*/
+    .login{width:100%;}
+}
+
+@media only screen and (max-width: 440px) {
+    /*基本资料*/
+    .home_bottom .home_bottom-user_info{width:90%;}
+    /*添加游戏*/
+    .game input{width:100%;}
+    .game textarea{width:100%;}
+    /*轮播图*/
+    .index_top{height:220px;}
+    /*首页的帖子导航*/
+    #postamount li{padding: 0 20px;}
+
+    /*热门评论*/
+    .zj_1{clear:both;width:100%;}
+    .zj_1 li{margin:0 auto;width:90%;}
+}
+
+@media only screen and (max-width: 410px) {
+    /*发帖的图片*/
+    .forum_body-right .post_msg img{width:90%;}
+    .forum_body-comment ul.comment>li div.comment_info div.small_comment>ul{width:100%;}
+
+    /*注册框*/
+    .registration{width:100%;}
+    .registration #inputs_2 input.form_phone{width:60%;}
+
+    /*留言板*/
+    .home_top .home_top-ul{position:absolute;top:10px;right:0;left:0;color:#999;}
+    .home_top{height:150px;}
+
+    /*home导航条*/
+    .home_middle .home_middle-nav li{margin:0 20px;}
+    /*轮播图*/
+    .index_top{height:200px;}
+    /*所有游戏*/
+    .game_list ul.game_title>li .game_info{width:60%;}
+    .game_list ul.game_title>li .game_info h3{height:20px;}
+}
+@media only screen and (max-width:350px){
+    /*帖子信息*/
+    .forum_body-left ul.forum_title>li .user_info{width:100%;}
+    /*评论信息的宽度*/
+    .forum_body-comment>ul.comment>li div.comment_info{width:100%;}
+    /*登录框*/
+    .login #inputs{width:100%;padding:0;}
+    .login #inputs #username,.login #inputs #password{width:100%;}
+    /*home导航条*/
+    .home_middle .home_middle-nav li{margin:0 10px;}
+    /*轮播图*/
+    .index_top{height:180px;}
+
+    /*游戏*/
+    .content li{width:100%;}
+
+    /*首页的帖子导航*/
+    #postamount li{padding: 0 10px;}
+
+    /*logo*/
+    .imgd{width: 120px; margin-top:20px}
+
+    /*所有游戏*/
+    .game_list ul.game_title>li .game_info{width:100%;}
+
+}
+

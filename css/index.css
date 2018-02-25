@@ -1,0 +1,98 @@
+section{
+    margin-top:-10px;
+}
+
+
+/*帖子数量*/
+#postamount li{float: left;border-right:1px solid #cccccc;padding: 0 30px;}
+.postamount_right{float: right;}
+#postamount ul{width: 100%;}
+#postamount{border:1px solid #eee;padding: 5px 0;background: white;margin: 20px auto; border-radius:4px;}
+/*帖子导航*/
+.postnav_hot{float: right;padding:30px 0;font-size: 24px;font-family: "微软雅黑"; line-height: 31px;display: block;}
+#postnav li a{color: black;}
+#postnav ul{width: 100%;}
+#postnav{border: solid 1px red;padding: 30px ; background-color: #f0f3f4;}
+
+/*zj*/
+.zj{
+    padding:10px 0 0 10px;
+    min-height: 240px;
+    background-color: #ffffff;
+}
+
+.zj_1{
+    padding: 0 10px 0 10px;
+    width: 270px;
+    height: 234px;
+    float: left;
+}
+
+.zj_1 ul li{
+	padding:0 0 0 10px;
+    background:url(../images/dot.gif) 0 center  no-repeat;
+    line-height: 20px;
+}
+
+
+.zj_m{
+    height: 32px;
+}
+
+.zj_m a{
+    font-size: 19px;
+    font-family: 黑体;
+    line-height: 32px;
+}
+
+/*游戏*/
+/*RPG*/
+.rpg,.speed,.duli{
+    margin:10px auto;
+    background:#fff;
+    border:1px solid #eee;
+    border-radius:4px;
+}
+.tag{
+    line-height: 50px;
+    width: 100%;
+    border-left:2px solid #f14537;
+}
+.tag h2{
+    margin:0 10px 0 10px;
+    letter-spacing:3px;
+}
+.content{
+    margin:0 auto;
+    width:96%;
+    font-size: 18px;
+}
+.content span{
+    font-size: 14px;
+}
+.content img {
+    float: left;
+    margin:10px;
+    width:120px;
+    height:70px;
+    border-radius:10px;
+}
+.content li{
+    float: left;
+    margin:0 1%;
+    width: 360px;
+}
+.content li .game_info{
+    float:left;
+    margin:5px 0 0 0;
+}
+.content li .game_info a{
+    display:block;
+    line-height:1.5;
+}
+.content li .game_info a:hover{
+    color:#79bc1f;
+}
+.content li .game_info p{
+    font-size:12px;
+}
