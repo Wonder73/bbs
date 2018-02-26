@@ -5,7 +5,7 @@
 
     $game_id = $_GET['game_id'];
     $time = date('Y-m-d');
-    $res = mysql_query("select game_name,game_name_cn,(select COUNT(*) from sign_in where date > '{$time}' and game_name=(select game_name from game where game_id={$_GET['game_id']})) as sign_in from game where game_id={$_GET['game_id']}");
+    $res = mysql_query("select game_name,game_name_cn,(select COUNT(*) from sign_in where date > '{$time}' and game_id = {$game_id}) as sign_in from game where game_id={$_GET['game_id']}");
     $info = mysql_fetch_assoc($res);
 
     $game_name=$info['game_name'];

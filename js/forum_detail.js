@@ -1,5 +1,6 @@
 $(function (){
     var game_name = $('.forum_body-left').attr('game_name');
+    var game_id = window.location.search.slice(1).split('&')[1].split('=')[1];
     var forum_id = $('.forum_body-left .forum_body-detail h1').attr('forum_id');
     var user_id= $('.forum_body-info').attr('user_id');       //作者
     var cookie_id= getCookie('user_id');         //自己
@@ -22,17 +23,18 @@ $(function (){
     });
 
     /*加载楼主的热帖*/
-    $.post('config/insert_show_small_com.php',{'type':'hot','game_name':game_name,'user_id':user_id,'forum_id':forum_id},function (data){
+    $.post('config/insert_show_small_com.php',{'type':'hot','game_id':game_id,'user_id':user_id,'forum_id':forum_id},function (data){
         var json = $.parseJSON(data);
         var html ='';
         for(var i=0;i<json.length;i++){
-            html+='<li forum_id="'+json[i].id+'"><a href="forum_detail.php?forum_id='+json[i].id+'&game_name='+game_name+'&user_id='+user_id+'">'+json[i].title+'</a></li>';
+            html+='<li forum_id="'+json[i].id+'"><a href="forum_detail.php?forum_id='+json[i].id+'&game_id='+game_id+'&user_id='+user_id+'">'+json[i].title+'</a></li>';
         }
         $('.forum_body-info .username_correlation ul').html(html).find('li').click(function (){
             var id=$(this).attr('forum_id');
-            $(window).load('config/show_overHead.php',{
+            $(window).load('config/show_forum.php',{
+                'show_type':'overhead',
                 'replay':'true',
-                'game_name':game_name,
+                'game_id':game_id,
                 'forum_id':id
             },function (responseText){
                 if(responseText>0){
@@ -335,7 +337,6 @@ $(function (){
 
 
 
-
     //点击赞同和反对的效果
     $('.end_opp ul li:nth-child(1)').click(function (){
         if(ver_login()){
@@ -347,7 +348,7 @@ $(function (){
         }
     });
     function end_opp(type){
-        $(window).load('config/end_opp',{'type':type,'game_name':game_name,'user_id':cookie_id,'forum_id':forum_id},function (responseText){
+        $(window).load('config/end_opp',{'type':type,'game_id':game_id,'user_id':cookie_id,'forum_id':forum_id},function (responseText){
             if(responseText>0){
                 //loading居中
                 center($('.loading'));

@@ -9,7 +9,7 @@
         $max_row=10;
         $limit=isset($_POST['limit'])?$_POST['limit']:1   ;
         $limit_start=($limit-1)*$max_row;
-        $game_name = $_POST['game_name'];
+        $game_id = $_POST['game_id'];
 
         if(!empty($_POST['type'])){
             $type=$_POST['type'];
@@ -23,7 +23,7 @@
         }else{
             $order='';
         }
-        $sql = "select (select COUNT(*) from {$game_name}) as count,{$game_name}_id as id,user.user_id,title,{$game_name}.date,replay,comment,nickname as username,top_img from {$game_name},user where {$game_name}.user_id=user.user_id {$order} limit $limit_start,$max_row";
+        $sql = "select (select COUNT(*) from forum where game_id = {$game_id}) as count,forum_id as id,user.user_id,title,forum.date,replay,comment,nickname as username,top_img from forum,user where forum.user_id=user.user_id {$order} and game_id = {$game_id} limit $limit_start,$max_row";
         $res = mysql_query($sql);
         $info='';
         while($row = mysql_fetch_assoc($res)){
@@ -34,9 +34,9 @@
         }
         echo '['.substr($info,0,strlen($info)-1).']';
     }else if($show_type == 'overhead'){             //显示置顶帖子
-        $game_name=$_POST['game_name'];
+        $game_id=$_POST['game_id'];
         if(!isset($_POST['replay'])){
-            $sql = "select (select COUNT(*) from {$game_name}) as count,{$game_name}_id as id,{$game_name}.user_id,title,{$game_name}.date,replay,comment,nickname as username,top_img from {$game_name},user where {$game_name}.user_id=user.user_id and overhead=1 order by date limit 0,4";
+            $sql = "select (select COUNT(*) from forum where game_id={$game_id}) as count,forum_id as id,forum.user_id,title,forum.date,replay,comment,nickname as username,top_img from forum,user where forum.user_id=user.user_id and overhead=1 and game_id = {$game_id} order by date limit 0,4";
             $res = mysql_query($sql);
 
             $info = '';
@@ -50,7 +50,7 @@
             echo '['.substr($info,0,strlen($info)-1).']';
         }else{
             $forum_id=$_POST['forum_id'];
-            $sql = "update {$game_name} set replay=replay+1 where {$game_name}_id={$forum_id}";
+            $sql = "update forum set replay=replay+1 where forum_id={$forum_id}";
             mysql_query($sql);
             echo mysql_affected_rows();
         }

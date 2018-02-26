@@ -5,11 +5,11 @@
     $type = $_POST['type'];
     $big_id = isset($_POST['big_id'])?$_POST['big_id']:'';
     $user_id = isset($_POST['user_id'])?$_POST['user_id']:'';
-    $game_name = $_POST['game_name'];
+    $game_id = $_POST['game_id'];
     $text = isset($_POST['text'])?$_POST['text']:'';
 
     if($type === 'hot'){
-        $sql = "select {$game_name}_id as id,title from {$game_name} where user_id={$user_id} order by replay desc limit 0,10";
+        $sql = "select forum_id as id,title from forum where user_id={$user_id} order by replay desc limit 0,10";
         $res = mysql_query($sql);
         $info = '';
         while($row = mysql_fetch_assoc($res)){

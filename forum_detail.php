@@ -2,13 +2,13 @@
     require 'top.php';
     require 'config/config.php';
 
-    $game_name = $_GET['game_name'];
+    $game_id = $_GET['game_id'];
     $user_id = $_GET['user_id'];
     $forum_id = $_GET['forum_id'];
-    $sql = "select game_id,game_name_cn from game where game_name='{$game_name}'";
+    $sql = "select game_id,game_name_cn from game where game_id={$game_id}";
     $res = mysql_query($sql);
     $game_info = mysql_fetch_assoc($res);
-    $sql = "select nickname as username,type,top_img,title,forum_content,replay,comment,end,opp,{$game_name}.date,{$game_name}.user_id from {$game_name},user where {$game_name}.user_id=user.user_id and {$game_name}_id={$forum_id} and {$game_name}.user_id ={$user_id}";
+    $sql = "select nickname as username,type,top_img,title,forum_content,replay,comment,end,opp,forum.date,forum.user_id from forum,user where forum.user_id=user.user_id and forum_id={$forum_id} and forum.user_id ={$user_id}";
     $res = mysql_query($sql);
     $forum_info = mysql_fetch_assoc($res);
 ?>
@@ -21,7 +21,7 @@
     <p class="nav document-width">> <a href="index.php">社区</a> > <a href="forum.php?game_id=<?php echo $game_info['game_id'];?>"><?php echo $game_info['game_name_cn'];?></a>> <a href="#"><?php echo $forum_info['title'];?></a></p>
 <!--主体内容-->
 <div class="forum_body document-width">
-    <div class="forum_body-left" game_name="<?php echo $game_name;?>">
+    <div class="forum_body-left" game_name="<?php echo $game_info['game_name_cn'];?>">
         <!--帖子详情-->
         <div class="forum_body-detail">
             <h1 forum_id="<?php echo $forum_id;?>"><?php echo $forum_info['title'];?></h1>
