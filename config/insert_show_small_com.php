@@ -20,12 +20,12 @@
         }
         echo '['.substr($info,0,strlen($info)-1).']';
     }else if($type === 'insert'){
-        $sql = "insert {$game_name}_small_com(big_id,user_id,text) values({$big_id},{$user_id},'{$text}')";
+        $sql = "insert forum_small_com(big_id,user_id,text) values({$big_id},{$user_id},'{$text}')";
         mysql_query($sql);
         echo mysql_affected_rows();
         mysql_query("update user set exp = exp+2 where user_id = {$user_id}");
     }else{
-        $sql = "select nickname as username,text,{$game_name}_small_com.date,{$game_name}_small_com.user_id from {$game_name}_small_com,user where {$game_name}_small_com.user_id=user.user_id and big_id={$big_id} order by date asc";
+        $sql = "select nickname as username,text,forum_small_com.date,forum_small_com.user_id from forum_small_com,user where forum_small_com.user_id=user.user_id and big_id={$big_id} order by date asc";
         $res = mysql_query($sql);
         $info = '';
         while($row = mysql_fetch_assoc($res)){

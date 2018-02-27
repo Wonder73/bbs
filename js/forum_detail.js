@@ -90,7 +90,7 @@ $(function (){
                     url:'config/add_forum_com.php',
                     data:{
                         type:'add_big_com',
-                        'game_name':game_name,
+                        'game_id':game_id,
                         'forum_id':forum_id,
                         'user_id':cookie_id,
                         'html':html
@@ -129,7 +129,7 @@ $(function (){
     //加载数据
     if(getCookie('username') !== null){
         $('.forum_body-comment>ul.comment span.comment_login').hide();
-        $(window).load('config/show_forum.php',{'game_name':game_name,'forum_id':forum_id,'show_type':'big_com'},function (responseText){
+        $(window).load('config/show_forum.php',{'game_id':game_id,'forum_id':forum_id,'show_type':'big_com'},function (responseText){
             var json=$.parseJSON(responseText);
             var list_num = 10;
             var count = json[0].count;
@@ -227,7 +227,7 @@ $(function (){
 
 
     function page_event(_this,index,page_num){
-        $(window).load('config/show_forum.php',{'game_name':game_name,'forum_id':forum_id,'limit':index,'show_type':'big_com'},function (responseText){
+        $(window).load('config/show_forum.php',{'game_id':game_id,'forum_id':forum_id,'limit':index,'show_type':'big_com'},function (responseText){
             var json=$.parseJSON(responseText);
             add_list($(_this).parent().prev(),json);
             //点击时，改变上下页的title
@@ -274,7 +274,7 @@ $(function (){
 
 
             function show_small(next,_this){
-                $.post('config/insert_show_small_com',{'type':'show','game_name':game_name,'big_id':big_comment_id},function (data){
+                $.post('config/insert_show_small_com',{'type':'show','game_id':game_id,'big_id':big_comment_id},function (data){
                     var json = $.parseJSON(data);
                     var html = "";
                     for(var i=0; i<json.length;i++){
@@ -292,7 +292,7 @@ $(function (){
                                 url:'config/insert_show_small_com.php',
                                 data:{
                                     'type':'insert',
-                                    'game_name':game_name,
+                                    'game_id':game_id,
                                     'user_id':cookie_id,
                                     'big_id':big_comment_id,
                                     'text':text

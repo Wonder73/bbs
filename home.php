@@ -6,7 +6,7 @@
     $res = mysql_query('select game_name from game');
     $count =0;
     while($row = mysql_fetch_assoc($res)){
-        $sql = "insert ready_table (select * from {$row['game_name']} where user_id = {$_GET['user_id']})";
+        $sql = "insert ready_table (select * from forum where user_id = {$_GET['user_id']})";
         mysql_query($sql);
         $count += mysql_affected_rows();
     }

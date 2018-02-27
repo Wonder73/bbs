@@ -19,16 +19,16 @@
         }
 
     }else if($type=='add_big_com'){         //添加评论
-        $game_name = $_POST['game_name'];
+        $game_id = $_POST['game_id'];
         $user_id = $_POST['user_id'];
         $forum_id = $_POST['forum_id'];
         $text = $_POST['html'];
-        mysql_query("select * from {$game_name}_big_com where forum_id={$forum_id}");
+        mysql_query("select * from forum_big_com where forum_id={$forum_id} and game_id={$game_id}");
         $position = mysql_affected_rows()+2;
 
-        $sql = "insert {$game_name}_big_com(forum_id,user_id,game_name,text,position) values({$forum_id},{$user_id},'{$game_name}','{$text}',{$position})";
+        $sql = "insert forum_big_com(forum_id,user_id,game_id,text,position) values({$forum_id},{$user_id},{$game_id},'{$text}',{$position})";
         mysql_query($sql);
         echo mysql_affected_rows();
-        mysql_query("update {$game_name} set comment=comment+1 where {$game_name}_id={$forum_id}");
+        mysql_query("update forum set comment=comment+1 where forum_id={$forum_id}");
         mysql_query("update user set exp = exp+3 where user_id = {$user_id}");
     }

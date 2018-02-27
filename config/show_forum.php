@@ -56,14 +56,14 @@
         }
     }else if($show_type == 'big_com'){         //显示大评论
         $forum_id = $_POST['forum_id'];
-        $game_name = $_POST['game_name'];
+        $game_id = $_POST['game_id'];
 
         $max_row=10;
         $limit=isset($_POST['limit'])?$_POST['limit']:1   ;
         $limit_start=($limit-1)*$max_row;
 
 
-        $sql = "select (select COUNT(*) from {$game_name}_big_com where forum_id={$forum_id}) as count,{$game_name}_big_com_id as id,{$game_name}_big_com.user_id,text,{$game_name}_big_com.date,position,nickname as username,top_img from {$game_name}_big_com,user  where {$game_name}_big_com.user_id=user.user_id and forum_id={$forum_id} order by {$game_name}_big_com.date  limit $limit_start,$max_row";
+        $sql = "select (select COUNT(*) from forum_big_com where forum_id={$forum_id} and game_id={$game_id}) as count,big_com_id as id,forum_big_com.user_id,text,forum_big_com.date,position,nickname as username,top_img from forum_big_com,user  where forum_big_com.user_id=user.user_id and forum_id={$forum_id} and game_id={$game_id} order by forum_big_com.date limit $limit_start,$max_row";
         $res = mysql_query($sql);
         $info='';
         while($row = mysql_fetch_assoc($res)){
