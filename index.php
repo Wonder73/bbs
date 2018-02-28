@@ -87,7 +87,7 @@
                         $info[] = $row;
                     }
                     for($i=0;$i<count($info);$i++){
-                        echo '<li><a href="forum_detail.php?forum_id='.$info[$i]['id'].'&game_name=astroneer&user_id='.$info[$i]['user_id'].'">'.$info[$i]['title'].'</a></li>';
+                        echo '<li><a href="forum_detail.php?forum_id='.$info[$i]['id'].'&game_id=1&user_id='.$info[$i]['user_id'].'">'.$info[$i]['title'].'</a></li>';
                     }
                 ?>
             </ul>
@@ -103,7 +103,7 @@
                         $info[] = $row;
                     }
                     for($i=0;$i<count($info);$i++){
-                        echo '<li><a href="forum_detail.php?forum_id='.$info[$i]['id'].'&game_name=astroneer1&user_id='.$info[$i]['user_id'].'">'.$info[$i]['title'].'</a></li>';
+                        echo '<li><a href="forum_detail.php?forum_id='.$info[$i]['id'].'&game_1id=4&user_id='.$info[$i]['user_id'].'">'.$info[$i]['title'].'</a></li>';
                     }
                     ?>
             </ul>
@@ -120,7 +120,7 @@
                         $info[] = $row;
                     }
                     for($i=0;$i<count($info);$i++){
-                        echo '<li><a href="forum_detail.php?forum_id='.$info[$i]['id'].'&game_name=fifa18&user_id='.$info[$i]['user_id'].'">'.$info[$i]['title'].'</a></li>';
+                        echo '<li><a href="forum_detail.php?forum_id='.$info[$i]['id'].'&game_id=38&user_id='.$info[$i]['user_id'].'">'.$info[$i]['title'].'</a></li>';
                     }
                     ?>
                 </ul>
@@ -137,7 +137,7 @@
                     $info[] = $row;
                 }
                 for($i=0;$i<count($info);$i++){
-                    echo '<li><a href="forum_detail.php?forum_id='.$info[$i]['id'].'&game_name=Diablo3&user_id='.$info[$i]['user_id'].'">'.$info[$i]['title'].'</a></li>';
+                    echo '<li><a href="forum_detail.php?forum_id='.$info[$i]['id'].'&game_id=23&user_id='.$info[$i]['user_id'].'">'.$info[$i]['title'].'</a></li>';
                 }
                 ?>
             </ul>

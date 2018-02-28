@@ -9,12 +9,14 @@
     }else if($type == 'like'){       //home点赞
         $user_id = $_POST['user_id'];
         $cookie_id = $_POST['cookie_id'];
+        $time = date('Y-m-d');
 
-        mysql_query("update user set `like`=`like`+1 where user_id ={$user_id}");
 
-        mysql_query("select * from `like` where cookie_id = {$cookie_id}");
+
+        mysql_query("select * from `like` where cookie_id = {$cookie_id} and date<'{$time}'");
         $list = mysql_affected_rows();
         if($list<=0){
+            mysql_query("update user set `like`=`like`+1 where user_id ={$user_id}");
             $sql = "insert `like`(user_id,cookie_id) values({$user_id},{$cookie_id})";
             mysql_query($sql);
             echo mysql_affected_rows();

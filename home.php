@@ -1,15 +1,10 @@
 <?php
     require 'top.php';
     require 'config/config.php';
-    /*y一开始就准备数据*/
-    mysql_query('delete from ready_table');
-    $res = mysql_query('select game_name from game');
     $count =0;
-    while($row = mysql_fetch_assoc($res)){
-        $sql = "insert ready_table (select * from forum where user_id = {$_GET['user_id']})";
-        mysql_query($sql);
-        $count += mysql_affected_rows();
-    }
+    $sql = "select * from forum where user_id = {$_GET['user_id']}";
+    mysql_query($sql);
+    $count = mysql_affected_rows();
     $res = mysql_query("select * from message where user_id = {$_GET['user_id']}");
     $msg_count = mysql_affected_rows();
     $res = mysql_query("select visit,`like` from user where user_id = {$_GET['user_id']}");

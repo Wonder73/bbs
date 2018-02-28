@@ -74,11 +74,12 @@
         }
         echo '['.substr($info,0,strlen($info)-1).']';
     }else if($show_type == 'user_forum'){              //home页面的用户帖子
+        $user_id = $_POST['user_id'];
         $max_row=10;
         $limit=isset($_POST['limit'])?$_POST['limit']:1   ;
         $limit_start=($limit-1)*$max_row;
 
-        $sql = "select (select COUNT(*) from ready_table) as count,id,title,ready_table.date,replay,comment,game_name,game_name_cn from ready_table,game where ready_table.game_id = game.game_id order by ready_table.date desc limit $limit_start,$max_row";
+        $sql = "select (select COUNT(*) from forum where user_id={$user_id}) as count,forum_id as id,title,forum.date,replay,comment,forum.game_id,game_name,game_name_cn from forum,game where forum.game_id = game.game_id and user_id={$user_id} order by forum.date desc limit $limit_start,$max_row";
         $res = mysql_query($sql);
         $info='';
         while($row = mysql_fetch_assoc($res)){

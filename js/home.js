@@ -28,7 +28,7 @@ $(function (){
                         center($('.loading'));
                         $('.loading').show();
                         $('.loading').css('background','#fff url(images/info.png) no-repeat 0 center');
-                        $('.loading').html('你已经点击过了，请不要重复点击，谢谢合作！！');
+                        $('.loading').html('你今天已经点击过了，请不要重复点击，谢谢合作！！');
                         setTimeout(function (){
                             $('.loading').fadeOut(500);
                         },1000);
@@ -79,7 +79,7 @@ $(function (){
     });
     //加载数据
     function load_forum(){
-        $.post('config/show_forum.php',{'show_type':'user_forum'},function (responseText){
+        $.post('config/show_forum.php',{'show_type':'user_forum','user_id':user_id},function (responseText){
             var json=$.parseJSON(responseText);
             var list_num = 10;
             var count = json[0].count;
@@ -171,7 +171,7 @@ $(function (){
         });
 
         function page_event(_this,index,page_num){
-            $.post('config/show_forum.php',{'limit':index,'show_type':'user_forum'},function (responseText){
+            $.post('config/show_forum.php',{'limit':index,'show_type':'user_forum','user_id':user_id},function (responseText){
                 var json=$.parseJSON(responseText);
                 add_list($(_this).parent().prev(),json);
                 //点击时，改变上下页的title
@@ -190,17 +190,18 @@ $(function (){
     function add_list(obj,json){
         var html='<table class="home_bottom-forum" cellspacing="0" cellpadding="0"><tr>'+(true_false()?'<td><input type="checkbox" name="check_All" class="check_All" id="all"><label for="all">全选/全不选</label></td>':'<td width="0"></td>')+'<td>帖子名称</td><td>版块</td><td>评论数/访问数</td><td>发表时间</td>'+(true_false()?'<td colspan="2">操作</td>':'<td></td>')+'</tr>';
         for(var i=0;i<json.length;i++){
-            html+='<tr forum_id="'+json[i].id+'" game_name="'+json[i].game_name+'">'+(true_false()?'<td><input type="checkbox" name="table_check" class="table_check"></td>':'<td  width="0"></td>')+'<td><a href="forum_detail.php?forum_id='+json[i].id+'&game_name='+json[i].game_name+'&user_id='+user_id+'">'+json[i].title+'</a></td><td>'+json[i].game_name_cn+'</td><td>'+json[i].comment+'/'+json[i].replay+'</td><td>'+json[i].date+'</td>'+(true_false()?'<td class="edit_user-forum">编辑</td><td class="del_user-forum">删除</td>':"<td></td>")+'</tr>';
+            html+='<tr forum_id="'+json[i].id+'" game_id="'+json[i].game_id+'" game_name="'+json[i].name+'">'+(true_false()?'<td><input type="checkbox" name="table_check" class="table_check"></td>':'<td  width="0"></td>')+'<td><a href="forum_detail.php?forum_id='+json[i].id+'&game_id='+json[i].game_id+'&user_id='+user_id+'">'+json[i].title+'</a></td><td>'+json[i].game_name_cn+'</td><td>'+json[i].comment+'/'+json[i].replay+'</td><td>'+json[i].date+'</td>'+(true_false()?'<td class="edit_user-forum">编辑</td><td class="del_user-forum">删除</td>':"<td></td>")+'</tr>';
         }
         html+='</table>'+(true_false()?'<input type="button" name="del_select" class="del_select" value="删除选中">':'');
         //alert(html);
         //点击增加阅读数
         obj.html(html).find('table tr td:nth-child(2)').click(function (){
             var id=$(this).parent().attr('forum_id');
-            var game_name =$(this).parent().attr('game_name');
-            $(window).load('config/show_overHead.php',{
+            var game_id =$(this).parent().attr('game_id');
+            $(window).load('config/show_forum.php',{
+                'show_type':'overhead',
                 'replay':'true',
-                'game_name':game_name,
+                'game_id':game_id,
                 'forum_id':id
             },function (responseText){
                 if(responseText>0){
@@ -445,7 +446,7 @@ $(function (){
     function all_add_list(obj,json){
         var html='<table class="home_bottom-forum" cellspacing="0" cellpadding="0"><tr>'+(true_false()?'<td><input type="checkbox" name="check_All" class="check_All" id="all"><label for="all">全选/全不选</label></td>':'<td width="0"></td>')+'<td>帖子名称</td><td>版块</td><td>评论数/访问数</td><td>发表时间</td>'+(true_false()?'<td colspan="2">操作</td>':'<td></td>')+'</tr>';
         for(var i=0;i<json.length;i++){
-            html+='<tr user_id="'+json[i].user_id+'" forum_id="'+json[i].id+'" game_name="'+json[i].game_name+'">'+(true_false()?'<td><input type="checkbox" name="table_check" class="table_check"></td>':'<td  width="0"></td>')+'<td><a href="forum_detail.php?forum_id='+json[i].id+'&game_name='+json[i].game_name+'&user_id='+json[i].user_id+'">'+json[i].title+'</a></td><td>'+json[i].game_name_cn+'</td><td>'+json[i].comment+'/'+json[i].replay+'</td><td>'+json[i].date+'</td>'+(true_false()?'<td class="del_user-forum">删除</td>':"<td></td>")+''+(json[i].overhead !=='1'?'<td class="head">置顶</td>':'<td class="clear_head">取消置顶</td>')+'</tr>';
+            html+='<tr user_id="'+json[i].user_id+'" forum_id="'+json[i].id+'" game_id="'+json[i].game_id+'">'+(true_false()?'<td><input type="checkbox" name="table_check" class="table_check"></td>':'<td  width="0"></td>')+'<td><a href="forum_detail.php?forum_id='+json[i].id+'&game_id='+json[i].game_id+'&user_id='+json[i].user_id+'">'+json[i].title+'</a></td><td>'+json[i].game_name_cn+'</td><td>'+json[i].comment+'/'+json[i].replay+'</td><td>'+json[i].date+'</td>'+(true_false()?'<td class="del_user-forum">删除</td>':"<td></td>")+''+(json[i].overhead !=='1'?'<td class="head">置顶</td>':'<td class="clear_head">取消置顶</td>')+'</tr>';
         }
         html+='</table>'+(true_false()?'<input type="button" name="del_select" class="del_select" value="删除选中">':'');
         //alert(html);
@@ -729,11 +730,11 @@ $(function (){
         table.find('tr td:nth-child(1) input[name=table_check]').each(function (){
             if($(this).prop('checked')){
                 var id=$(this).parent().parent().attr('forum_id');
-                var game_name =$(this).parent().parent().attr('game_name');
+                var game_id =$(this).parent().parent().attr('game_id');
                 $.post('config/change_forum.php',{
                     'type':'del',
                     'forum_id':id,
-                    'game_name':game_name
+                    'game_id':game_id
                 },function (data){
                     load_forum();
                     load_all();
@@ -744,20 +745,20 @@ $(function (){
         });
     }).on('click','.del_user-forum',function (){          //删除特定的
         var id=$(this).parent().attr('forum_id');
-        var game_name =$(this).parent().attr('game_name');
+        var game_id =$(this).parent().attr('game_id');
         $.post('config/change_forum.php',{
             'type':'del',
             'forum_id':id,
-            'game_name':game_name
+            'game_id':game_id
         },function (data){
             load_forum();
             load_all();
         });
     }).on('click','.edit_user-forum',function (){      //编辑帖子
         var id=$(this).parent().attr('forum_id');
-        var game_name =$(this).parent().attr('game_name');
+        var game_id =$(this).parent().attr('game_id');
         var game_name_cn =$(this).parent().find('td:nth-child(3)').html();
-        var title =$(this).parent().find('td:nth-child(2)').html();
+        var title =$(this).parent().find('td:nth-child(2) a').html();
         if($.browser.version >9){
             var editor_msg=$('.editor_msg');
             $('#shadow').fadeIn(400);
@@ -765,11 +766,11 @@ $(function (){
             document.documentElement.style.overflow='hidden';
             center(editor_msg);
             document.documentElement.scrollTop=0;
-            editor_msg.find('p').attr('game_name',game_name).attr('forum_id',id).find('span').html(game_name_cn);
+            editor_msg.find('p').attr('game_id',game_id).attr('forum_id',id).find('span').html(game_name_cn);
             editor_msg.find('.msg_title').val(title);
             $.post('config/change_forum.php',{
                 'type':'get_content',
-                'game_name':game_name,
+                'game_id':game_id,
                 'forum_id':id
             },function (data){
                 editor.txt.html(data);
@@ -851,21 +852,21 @@ $(function (){
         });
     }).on('click','.clear_head',function (){        //取消顶置
         var forum_id=$(this).parent().attr('forum_id');
-        var game_name =$(this).parent().attr('game_name');
+        var game_id =$(this).parent().attr('game_id');
         $.post('config/change_forum.php',{
             'type':'clear_head',
             'forum_id':forum_id,
-            'game_name':game_name
+            'game_id':game_id
         },function (data){
             location.reload();
         });
     }).on('click','.head',function (){       //顶置
         var forum_id=$(this).parent().attr('forum_id');
-        var game_name =$(this).parent().attr('game_name');
+        var game_id =$(this).parent().attr('game_id');
         $.post('config/change_forum.php',{
             'type':'head',
             'forum_id':forum_id,
-            'game_name':game_name
+            'game_id':game_id
         },function (data){
             if(data == '1'){
                 location.reload();
@@ -927,7 +928,7 @@ $(function (){
         var title=$('.editor_msg input.msg_title').val();
         var content_html=editor.txt.html();
         var content_text=editor.txt.text();
-        var game_name =$('.editor_msg p').attr('game_name');
+        var game_id =$('.editor_msg p').attr('game_id');
         var forum_id =$('.editor_msg p').attr('forum_id');
         if(!title){
             alert('标题不可为空');
@@ -938,7 +939,7 @@ $(function (){
                 url:'config/change_forum.php',
                 data:{
                     type:'edit',
-                    game_name:game_name,
+                    game_id:game_id,
                     forum_id:forum_id,
                     title:title,
                     content:content_html
