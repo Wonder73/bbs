@@ -709,7 +709,7 @@ $(function (){
     $('.menu').click(function (){
         $('.top_big2 .phone_menu').stop().slideToggle();
     });
-    $('.top_big2 .phone_menu>ul>li').click(function (){
+    $('.top_big2 .phone_menu>ul>li:not(:last-child)').click(function (){
         var _this = this;
         if($(this).find('ul').is(':hidden')){
             $(this).find('ul').show().animate({'height':'160px'},300);
@@ -764,6 +764,75 @@ $(function (){
             img_li.eq(index).show().css('top','-100%').animate({'top':'0'},1000);
             img_nav(index);
         }
+    });
+
+    //当有存储数据时初始化搜索列表
+    reder();
+    function reder(){
+      if(window.localStorage.record){
+        let lists = window.localStorage.record.split(',').reverse();
+        let html = '';
+        if(lists.length >5){     //如果lists超出五个就截取最新的五个
+          lists = lists.splice(0,5);
+        }
+        for(let list of lists){
+          html += `<li>${list}</li>`;
+        }
+        html += '<li class="clearSearch">清除搜索数据！！！</li>'
+        $('.search_list').html(html);
+      }else{
+        $('.search_list').html('<li>暂无搜索数据！！！</li>');
+      }
+    }
+    $('.search_list').on('click','.clearSearch',function (){    //清除后台数据
+      window.localStorage.removeItem('record');
+      reder();
+    });
+    // 点击搜索
+    $('.search_2').click(function (){
+      if(!window.localStorage.record){
+        var record = [];
+      }else{
+        var record = window.localStorage.record.split(',');
+      }
+      var content = $(this).parent().find('.search').val();
+      if(record.indexOf(content)<0){
+        record.push(content);
+        record = record.toString();
+        window.localStorage.record = record;
+        reder();
+      }
+    });
+    // 当搜索框获得焦点时
+    $('.search').focus(function (){
+      var index=0;
+      // var search_list-pc = ;
+      $('.top_big2 div.search_div .search_list,.top_big2 .phone_menu>ul>li>ul.search_list').slideDown(200);
+      //$('.top_big2 .phone_menu>ul>li>ul.search_list li:nth-child(1)').addClass('move').siblings().removeClass('move');
+      //$('.top_big2 div.search_div .search_list li:nth-child(1)').addClass('move').siblings().removeClass('move');
+      $(window).keydown(function (e){
+        var keyCode = e.keyCode;
+        var count = $('.top_big2 .phone_menu>ul>li>ul.search_list li').size()-1;
+        if(keyCode === 40){
+          if(++index > count){
+            index =  1;
+          }
+          $('.top_big2 .phone_menu>ul>li>ul.search_list li:nth-child('+index+')').addClass('move').siblings().removeClass('move');
+          $('.top_big2 div.search_div .search_list li:nth-child('+index+')').addClass('move').siblings().removeClass('move');
+          var text = $('.top_big2 .phone_menu>ul>li>ul.search_list li:nth-child('+index+')').text();
+          $('input.search').val(text);
+        }else if(keyCode === 38){
+          if(--index <= 0){
+            index =  count;
+          }
+          $('.top_big2 .phone_menu>ul>li>ul.search_list li:nth-child('+index+')').addClass('move').siblings().removeClass('move');
+          $('.top_big2 div.search_div .search_list li:nth-child('+index+')').addClass('move').siblings().removeClass('move');
+          var text = $('.top_big2 .phone_menu>ul>li>ul.search_list li:nth-child('+index+')').text();
+          $('input.search').val(text);
+        }
+      });
+    }).blur(function (){
+      $('.top_big2 div.search_div .search_list,.top_big2 .phone_menu>ul>li>ul.search_list').slideUp(200);
     });
 
 });

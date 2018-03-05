@@ -46,18 +46,11 @@
     .content li{margin:2%;}
     .content {width:90%;}
 
-    .top_big2 .search{width:14%;}
-}
-
-@media only screen and (max-width: 1070px) {
     /*导航条*/
-    ul.pc li{padding:0 10px;}
-
+    ul.pc li{padding:0 6px;}
+    ul.pc li p{font-size:16px;}
 }
 
-@media only screen and (max-width: 1050px){}
-
-@media only screen and (max-width: 1020px) {}
 
 @media only screen and (max-width: 1000px) {
     .document-width{width:100%;}
@@ -74,14 +67,12 @@
     /*轮播图*/
     .index_top{height:400px;}
 
-    .top_big2 .search{width:9%;}
+
 }
 
 @media only screen and (max-width: 900px) {
-    /*导航条*/
-    .top_big2 ul li{padding:0 2%}
-    .search{width:20%;}
-
+    .search{width:18%;}
+    .top_big2 div.search_div .search_list{width:203px;}
     /*游戏*/
     .content li{margin:1%;}
     .content {width:100%;}
@@ -89,18 +80,21 @@
 }
 
 @media only screen and (max-width: 850px){
-    /*导航条*/
-    .top_big2 ul li{padding:0 1%}
-    .search{width:16%;}
+    .top_big2 .search_div{display:none;}
     /*轮播图*/
     .index_top{height:380px;}
+    .document-width{width:90%;}
+    /*logo*/
+    .imgd{width: 120px; margin-top:23px}
+    /*导航条*/
+    ul.pc li{padding:0 12px;}
+
 }
 
 @media only screen and (max-width: 800px) {
     /*游戏*/
     .content li{margin:0.5%;}
 }
-
 @media only screen and (max-width: 750px) {
 
     /*签到*/
@@ -113,7 +107,7 @@
 
     /*导航条*/
     .top_big2 .pc{display:none;}
-    .top_big2 .menu{display:block;}
+    .top_big2 .menu{display:block;right:160px;}
 
     /*轮播图*/
     .index_top{height:280px;}
@@ -194,6 +188,9 @@
 
     /*留言板*/
     ul.message li .msg_info{width:70%;}
+
+    /*轮播图*/
+    .index_top{height:220px;}
 }
 
 @media only screen and (max-width: 480px) {
@@ -207,8 +204,7 @@
     /*添加游戏*/
     .game input{width:100%;}
     .game textarea{width:100%;}
-    /*轮播图*/
-    .index_top{height:220px;}
+
     /*首页的帖子导航*/
     #postamount li{padding: 0 20px;}
 
@@ -257,11 +253,13 @@
     /*首页的帖子导航*/
     #postamount li{padding: 0 10px;}
 
-    /*logo*/
-    .imgd{width: 120px; margin-top:20px}
+    .document-width{width:100%;}
+    .top_big2 .menu{right:120px;}
 
     /*所有游戏*/
     .game_list ul.game_title>li .game_info{width:100%;}
 
-}
+    /*轮播图*/
+    .index_top{height:180px;}
 
+}

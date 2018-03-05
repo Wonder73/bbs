@@ -69,8 +69,12 @@
                 <div class="login_info">
                     <!--后台加载-->
                 </div>
-                <!--<input type="button" class="search_2 pc" value="搜索">
-                <input type="text" class="search pc" placeholder="输入你要搜索的内容">-->
+                <div class="search_div">
+                  <input type="button" class="search_2 pc" value="搜索">
+                  <input type="text" class="search pc" placeholder="输入你要搜索的内容">
+                  <ul class="search_list">
+                  </ul>
+                </div>
             </div>
             <i class="menu"></i>           <!--手机的菜单-->
             <div class="phone_menu">
@@ -92,7 +96,7 @@
                             ?>
                         </ul>
                     </li>
-                    <li><a href="lianxi.php"><p>关于我们</p></a>
+                    <li><a href="#"><p>关于我们</p></a>
                         <ul class="xiala4">
                             <li><a href="lianxi.php">-关于我们-</a></li>
                             <li><a href="lianxi.php">-联系我们-</a></li>
@@ -100,8 +104,11 @@
                             <li><a href="lianxi.php">-用户协议-</a></li>
                         </ul>
                     </li>
-                        <!--<input type="text" class="search phone_search" placeholder="输入你要搜索的内容">
-                        <input type="button" class="search_2 phone_search2" value="搜索">-->
+                    <li>
+                        <input type="text" class="phone_search search" placeholder="输入你要搜索的内容">
+                        <input type="button" class="search_2 phone_search2" value="搜索">
+                        <ul class="search_list">
+                        </ul>
                     </li>
                 </ul>
             </div>
