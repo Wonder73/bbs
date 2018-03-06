@@ -1,7 +1,5 @@
-/*响应式*/
+ /*响应式*/
 @media only screen and (max-width: 1920px) {
-    /*.document-width{width:80%;}*/
-
     /*发帖的图片*/
     .forum_body-right .post_msg img{width:55%;}
 }
