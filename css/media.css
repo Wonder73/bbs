@@ -21,8 +21,6 @@
     .zj_1{width:200px;}
 }
 
-@media only screen and (max-width: 1250px) {}
-
 @media only screen and (max-width: 1150px) {
     /*发帖的图片*/
     .forum_body-right .sign_in i{width:40%;}
@@ -45,8 +43,8 @@
     .content {width:90%;}
 
     /*导航条*/
-    ul.pc li{padding:0 6px;}
-    ul.pc li p{font-size:16px;}
+    ul.pc_menu li{padding:0 6px;}
+    ul.pc_menu li p{font-size:16px;}
 }
 
 
@@ -85,7 +83,7 @@
     /*logo*/
     .imgd{width: 120px; margin-top:23px}
     /*导航条*/
-    ul.pc li{padding:0 12px;}
+    ul.pc_menu li{padding:0 12px;}
 
 }
 
@@ -104,7 +102,7 @@
     .forum_body-right .post_msg img{width:100%;}
 
     /*导航条*/
-    .top_big2 .pc{display:none;}
+    .top_big2 .pc_menu{display:none;}
     .top_big2 .menu{display:block;right:160px;}
 
     /*轮播图*/

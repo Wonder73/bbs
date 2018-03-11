@@ -1,9 +1,9 @@
-$(function (){
-
-    load_game();
+ $(function (){
+   var search = window.location.search.slice(1).split('=')[1];
+    load_search();
     //加载全部游戏数据
-    function load_game(){
-        $(window).load('config/opera_game.php',{'type':'show_all'},function (responseText){
+    function load_search(){
+        $(window).load('config/search_result.php',{'type':'showSearch',search},function (responseText){
             var json=$.parseJSON(responseText);
             var list_num = 10;
             var count = json[0].count;
@@ -23,14 +23,13 @@ $(function (){
                     }
                 }
                 list+='<li title="2" class="next">下一页</li><li title="'+page_num+'"  class="bottom_page">尾页</li><li class="jump_li"><input type="text" value="0" class="jump_num"><input type="button" value="跳转" class="jump"></li><li>共<span>'+page_num+'</span>页</li><div class="clear_float"></div>';
-                $('.game_list ul.list').html(list);
+                $('.search_content ul.list').html(list);
             } else{
-                $('.game_list ul.list').html(' ');
+                $('.search_content ul.list').html(' ');
             }
-            game_add_list($('.game_list .game_title'),json);
-
+            search_add_list($('.search_content .search_title'),json);
             //跳转页数
-            $('.game_list ul.list li').click(function (){
+            $('.search_content ul.list li').click(function (){
                 var _this = this;
                 //数字跳转
                 if(!!(+$(this).html())){
@@ -56,7 +55,7 @@ $(function (){
                     }
                     page_event(_this,top_index_bottom,page_num);
                 }else{                        //输入跳转
-                    $('.game_list ul.list li.jump_li input:first-child').bind('input',function (){
+                    $('.search_content ul.list li.jump_li input:first-child').bind('input',function (){
                         var value= $(this).val();
                         $(this).val(value.replace(/\D+/g,''));
                         value = +$(this).val();
@@ -95,9 +94,9 @@ $(function (){
         });
 
         function page_event(_this,index,page_num){
-            $(window).load('config/opera_game.php',{'limit':index,'type':'show_all'},function (responseText){
+            $(window).load('config/search_result.php',{'limit':index,'type':'showSearch',search},function (responseText){
                 var json=$.parseJSON(responseText);
-                game_add_list($(_this).parent().prev(),json);
+                search_add_list($(_this).parent().prev(),json);
                 //点击时，改变上下页的title
                 $(_this).parent().find('.prev').attr('title',(index-1>0?index-1:1)).end().parent().find('.next').attr('title',(index+1<page_num?index+1:page_num));
                 var parent = $(_this).parent();
@@ -111,12 +110,11 @@ $(function (){
         }
     }
     //增加全部内容
-    function game_add_list(obj,json){
+    function search_add_list(obj,json){
         var html='';
         for(var i=0;i<json.length;i++){
-            html+='<li><div class="game_img" style="background:url(images/'+json[i].game_img+') center center;background-size:cover"></div><div class="game_info"><h3  forum_id="30"  user_id="1"><a href="forum.php?game_id='+json[i].id+'" target="_blank">'+json[i].game_name_cn+'</a></h3><ul class="game_date"><li>'+json[i].date+'</li><li><i class="forum_count"></i>'+json[i].forum_count+'</li><div class="clear_float"></div></ul></div><div class="clear_float"></div></li>';
+            html+='<li><div class="search_info"><h3><a href="forum_detail.php?forum_id='+json[i].id+'&search_id='+json[i].id+'&user_id='+json[i].user_id+'" target="_blank">'+json[i].title+'</a></h3><p class="forum_content">'+(json[i].forum_content).slice(0,20).replace(/<$/,'....')+'</p><ul class="search_date"><li>'+json[i].date+'</li><div class="clear_float"></div></ul></div><div class="clear_float"></div></li>';
         }
-         // alert(html);
         //点击增加阅读数
         obj.html(html);
     }

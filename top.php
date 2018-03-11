@@ -35,7 +35,7 @@
                 <div class="imgd">
                     <a href="index.php"><img src="images/logo.png" alt=""></a>
                 </div>
-                <ul class="pc">
+                <ul class="pc_menu">
                         <li><a href="index.php"><p>社区</p></a></li>
                         <li><a href="game_list.php"><p>所有游戏</p></a></li>
                         <li><a href="#"><p>热门游戏</p></a>
@@ -197,5 +197,3 @@
     <div class="loading">正在注册中..........</div>
 
 </header>
-
-<div class="clear_float"></div>

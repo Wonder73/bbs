@@ -94,7 +94,10 @@ img{
     background-color:#ffffff;
     height: 75px;
 }
-
+.top_big2 ul.pc_menu{
+    position:relative;
+    z-index:2;
+}
 .top_big2 p{
     font-size: 18px;
 }
@@ -172,6 +175,8 @@ img{
 .top_big2 .ul_2{
     display:block;
     float: right;
+    position:relative;
+    z-index:10;
 }
 .top_big2 .ul_2>li{
     padding:0 10px;
@@ -185,6 +190,7 @@ img{
     float:right;
     margin:0 10px;
     line-height:80px;
+    z-index:10;
 }
 .login_info p{
     display:block;
@@ -808,6 +814,7 @@ img{
 .top_big2 div.search_div{
   position:relative;
   height:100px;
+  z-index:1;
 }
 
 .top_big2 div.search_div .search_list{

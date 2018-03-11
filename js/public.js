@@ -688,6 +688,7 @@ $(function (){
                 var lv = exp.toString(2).length-1;
                 $('.ul_2').hide();
                 $('.login_info').show().html('<p>你好！，<span>'+(json.nickname?json.nickname:json.username)+'</span></p><div class="login_down"><img src="images/'+json.top_img+'" alt=""><div class="user_info"><p>Lv <span>'+lv+'</span></p> <p>'+json.nickname+'</p><p>'+json.description+'</p></div><span><a href="home.php?user_id='+json.user_id+'">查看更多</a></span><span class="exit_login">退出登录</span></div>');
+                $('.top_big2 div.search_div .search_list').css('right',"+=25px");
             }
         });
     }
@@ -796,20 +797,22 @@ $(function (){
         var record = window.localStorage.record.split(',');
       }
       var content = $(this).parent().find('.search').val();
-      if(record.indexOf(content)<0){
-        record.push(content);
-        record = record.toString();
-        window.localStorage.record = record;
-        reder();
+      if(content){         //判断搜索框有么有输入内容
+        if(record.indexOf(content)<0){
+          record.push(content);
+          record = record.toString();
+          window.localStorage.record = record;
+          reder();      //获得焦点时加载搜索记录
+        }
+        var search = $('input.search').val();
+        window.open('./search.php?search='+search);
+        $('input.search').val('');        //搜索完成后，清除记录
       }
     });
     // 当搜索框获得焦点时
-    $('.search').focus(function (){
+    $('.search').click(function (){
       var index=0;
-      // var search_list-pc = ;
       $('.top_big2 div.search_div .search_list,.top_big2 .phone_menu>ul>li>ul.search_list').slideDown(200);
-      //$('.top_big2 .phone_menu>ul>li>ul.search_list li:nth-child(1)').addClass('move').siblings().removeClass('move');
-      //$('.top_big2 div.search_div .search_list li:nth-child(1)').addClass('move').siblings().removeClass('move');
       $(window).keydown(function (e){
         var keyCode = e.keyCode;
         var count = $('.top_big2 .phone_menu>ul>li>ul.search_list li').size()-1;
@@ -831,8 +834,39 @@ $(function (){
           $('input.search').val(text);
         }
       });
-    }).blur(function (){
+      reder();
+    }).blur(function (){       //当搜索框失去焦点时
       $('.top_big2 div.search_div .search_list,.top_big2 .phone_menu>ul>li>ul.search_list').slideUp(200);
+    }).on('input',function (){
+      var html = '';      //后台搜索的数据的存储
+      var searchVal = $(this).val();     //获得搜索框的内容
+      if(searchVal){         //判断搜索的值是否为空，空就不执行下列操作
+        $.ajax({
+          url:'./config/search_result.php',
+          data:{
+            search:$.trim(searchVal),
+            type:'searchIndex'
+          },
+          type:'post',
+          async:'false',
+          success:function (data){
+            var json = $.parseJSON(data);
+            var len = json.length>6?6:json.length;
+            for(let i=0;i<len;i++){
+              html +='<li>'+json[i].title+'</li>';
+            }
+            html+="<li></li>"
+            $('.search_list').html(html);
+              //初始化搜索列表
+          }
+        });
+      }else{    //当搜索栏为空时显示搜索记录
+        reder();
+      }
+    });
+    $('.search_list').on('click',' li',function (){      //点击搜索列表，使得选中列表的内容，赋值到输入框
+      var val = $(this).text();
+      $('input.search').val(val);
     });
 
 });

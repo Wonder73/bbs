@@ -3,7 +3,7 @@ $(function (){
     var game_name=$('.forum_top').attr('game_name');
     var game_id = window.location.search.slice(1).split('=')[1];
     var user_id=getCookie('user_id');
-    var lv =  getCookie('lv');         //用于限制发帖
+    var lv =  getCookie('lv');       //用于限制发帖
 
     //页面第一次加载时初始化数据
     load_forum();
