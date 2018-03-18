@@ -43,16 +43,21 @@ $(function (){
                     page_event(_this,index,page_num);
                 }else if($(this).hasClass('top_page') || $(this).hasClass('bottom_page')){            //首页和尾页
                     var top_index_bottom = +$(this).attr('title');
+                    var length = $(this).parent().find('li').size();
                     if(top_index_bottom===1){                   //首页
                         $(this).parent().find('li').eq(2).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
-                        for(var i=3;i<8;i++){
+                        if(length === 12){
+                          for(var i=3;i<8;i++){
                             $(this).parent().find('li').eq(i).html(top_index_bottom+(i-2)).attr('title',top_index_bottom+(i-2));
+                          }
                         }
                     }else if(top_index_bottom === page_num){      //尾页
-                        for(var i=2;i<7;i++){
+                        if(length === 12){
+                          for(var i=2;i<7;i++){
                             $(this).parent().find('li').eq(i).html(top_index_bottom+(i-7)).attr('title',top_index_bottom+(i-7));
+                          }
                         }
-                        $(this).parent().find('li').eq(7).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
+                        $(this).parent().find('li').eq(length-5).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
                     }
                     page_event(_this,top_index_bottom,page_num);
                 }else{                        //输入跳转

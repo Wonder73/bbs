@@ -686,8 +686,9 @@ $(function (){
                 var json = $.parseJSON(data);
                 var exp =parseInt(json.exp);
                 var lv = exp.toString(2).length-1;
+                var name = json.nickname?json.nickname:json.username;
                 $('.ul_2').hide();
-                $('.login_info').show().html('<p>你好！，<span>'+(json.nickname?json.nickname:json.username)+'</span></p><div class="login_down"><img src="images/'+json.top_img+'" alt=""><div class="user_info"><p>Lv <span>'+lv+'</span></p> <p>'+json.nickname+'</p><p>'+json.description+'</p></div><span><a href="home.php?user_id='+json.user_id+'">查看更多</a></span><span class="exit_login">退出登录</span></div>');
+                $('.login_info').show().html('<p>你好！<span>'+(name.length<=6?name:name.slice(0,6)+'...')+'</span></p><div class="login_down"><img src="images/'+json.top_img+'" alt=""><div class="user_info"><p>Lv <span>'+lv+'</span></p> <p>'+json.nickname+'</p><p>'+json.description+'</p></div><span><a href="home.php?user_id='+json.user_id+'">查看更多</a></span><span class="exit_login">退出登录</span></div>');
                 $('.top_big2 div.search_div .search_list').css('right',"+=25px");
             }
         });

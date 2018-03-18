@@ -42,16 +42,21 @@
                     page_event(_this,index,page_num);
                 }else if($(this).hasClass('top_page') || $(this).hasClass('bottom_page')){            //首页和尾页
                     var top_index_bottom = +$(this).attr('title');
+                    var length = $(this).parent().find('li').size();
                     if(top_index_bottom===1){                   //首页
                         $(this).parent().find('li').eq(2).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
-                        for(var i=3;i<8;i++){
+                        if(length===12){
+                          for(var i=3;i<8;i++){
                             $(this).parent().find('li').eq(i).html(top_index_bottom+(i-2)).attr('title',top_index_bottom+(i-2));
+                          }
                         }
                     }else if(top_index_bottom === page_num){      //尾页
-                        for(var i=2;i<7;i++){
+                        if(length===12){
+                          for(var i=2;i<7;i++){
                             $(this).parent().find('li').eq(i).html(top_index_bottom+(i-7)).attr('title',top_index_bottom+(i-7));
+                          }
                         }
-                        $(this).parent().find('li').eq(7).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
+                        $(this).parent().find('li').eq(length-5).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
                     }
                     page_event(_this,top_index_bottom,page_num);
                 }else{                        //输入跳转
@@ -113,7 +118,7 @@
     function search_add_list(obj,json){
         var html='';
         for(var i=0;i<json.length;i++){
-            html+='<li><div class="search_info"><h3><a href="forum_detail.php?forum_id='+json[i].id+'&search_id='+json[i].id+'&user_id='+json[i].user_id+'" target="_blank">'+json[i].title+'</a></h3><p class="forum_content">'+(json[i].forum_content).slice(0,20).replace(/<$/,'....')+'</p><ul class="search_date"><li>'+json[i].date+'</li><div class="clear_float"></div></ul></div><div class="clear_float"></div></li>';
+            html+='<li><div class="search_info"><h3><a href="forum_detail.php?forum_id='+json[i].id+'&game_id='+json[i].id+'&user_id='+json[i].user_id+'" target="_blank">'+json[i].title+'</a></h3><p class="forum_content">'+(json[i].forum_content).slice(0,20).replace(/<$/,'....')+'</p><ul class="search_date"><li>'+json[i].date+'</li><div class="clear_float"></div></ul></div><div class="clear_float"></div></li>';
         }
         //点击增加阅读数
         obj.html(html);

@@ -60,9 +60,11 @@
         </div><!--home_middle-user_info-->
         <div class="home_middle-nav document-width">
             <ul>
-                <li  class="highlight">首页</li>
+                <li class="highlight">首页</li>
                 <li>帖子</li>
                 <li>留言</li>
+                <li>收藏</li>
+                <li>关注</li>
             </ul>
         </div><!--home_middle-nav-->
     </div><!--home_middle-->

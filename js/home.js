@@ -7,6 +7,13 @@ $(function (){
     var cookie_password = getCookie('password');
     if(!true_false()){
         $('.home_middle .edit').remove();
+        $.post('config/follow.php',{type:'check',user_id,cookie_id},function (responseText){
+          if(responseText<=0){
+            $('.home_middle-user_info').append('<ul class="follow"><li>关注</li></ul>');
+          }else{
+            $('.home_middle-user_info').append('<ul class="follow"><li class="already">取消关注</li></ul>');
+          }
+        })
         $('.home_middle .home_middle-user_info').append('<img src="images/like.png" alt="" class="like">');
         if(cookie_id){
             $.post('config/like_visit.php',{'type':'visit','user_id':user_id},function (data){});
@@ -49,6 +56,50 @@ $(function (){
         }
 
     }
+    //关注和取消关注
+    $('.home_middle-user_info,.home_bottom').on('click','.follow li',function (){
+      var _this=this;
+      var id = $(this).parent().parent().attr('user_id');  //获取关注页的用户ID
+      if(id){
+        user_id=id;
+      }
+      if(ver_login()){
+        var operation = $(this).html();    //获取在节点是关注还是取消关注
+        if(operation === '关注'){
+          $.ajax({
+            url:'config/follow.php',
+            data:{
+              type:'no',
+              cookie_id,   //用户ID
+              user_id     //要关注人的ID
+            },
+            type:'post',
+            asynd:false,
+            success(responseText){
+              if(responseText>0){
+                $(_this).addClass("already").html('取消关注');
+              }
+            }
+          });
+        }else if(operation === '取消关注'){
+          $.ajax({
+            url:'config/follow.php',
+            data:{
+              type:'off',
+              cookie_id,   //用户ID
+              user_id     //要关注人的ID
+            },
+            type:'post',
+            asynd:false,
+            success(responseText){
+              if(responseText>0){
+                  $(_this).removeClass("already").html('关注');
+              }
+            }
+          });
+        }
+      }
+    });
     /*中间导航条点击效果*/
     $('.home_middle .home_middle-nav').on('click','li',function (){
         $(this).addClass('highlight').siblings().removeClass('highlight');
@@ -56,27 +107,180 @@ $(function (){
         if(index === 0){
             index_user_info();
             $('.home_bottom ul.list').html('');
+            $('.home_bottom .follow_list').html('');
         }else if(index === 1){
             load_forum();
+            $('.home_bottom ul.list').html('');
             $('.home_bottom .content').html('');
+            $('.home_bottom .follow_list').html('');
         }else if(index === 2){
             $('.home_bottom ul.list').html('');
+            $('.home_bottom .follow_list').html('');
             $('.home_bottom .content').html('<div class="post_msg"><input type="text" name="con_message" class="con_message" placeholder="输入你要对我的话！！！"><input type="button" name="msg_but" class="msg_but" value="留言"></div>');
             load_msg();
-        }else if(index === 3){
+        }else if(index === 4){
+          $.post('config/follow.php',{user_id,cookie_id,'type':'count'},function (responseText){
+            var arr = responseText.split(',');$('.home_bottom .content').html('<ul class="follow_already"><li class="select">关注的人<span>（'+arr[0]+'）</span></li><li>粉丝<span>（'+arr[1]+'）</span></li></ul>');
+          });
+          $('.home_bottom ul.list').html('');
+          if(!$('.home_bottom .follow_list').size()){
+            $('.home_bottom .content').after('<ul class="follow_list"></ul>');
+          }
+          load_follow('follow');
+        }else if(index === 5){
+          $('.home_bottom .follow_list').html('');
+          $('.home_bottom .content').html('');
             if($(this).html()==='用户'){
-                $('.home_bottom .content').html('');
                 load_user();
             }else{
-                $('.home_bottom .content').html('');
                 load_all();
             }
 
-        }else if(index === 4){
+        }else if(index === 6){
+          $('.home_bottom .follow_list').html('');
             $('.home_bottom .content').html('');
             load_game();
         }
     });
+    //点击关注中的选项卡
+    $('.home_bottom .content').on('click','.follow_already li',function (){
+      var index = $(this).index();       //存储是第几个li
+      $(this).addClass('select').siblings().removeClass('select');
+      if(index === 0){            //关注的人
+        load_follow('follow');
+      }else if(index === 1){       //被关注的人
+        load_follow('already');
+      }
+    });
+
+    //加载关注数据
+    function load_follow(show_type){
+        $.post('config/follow.php',{'type':'show','user_id':user_id,'show_type':show_type},function (responseText){
+            var json=$.parseJSON(responseText);
+            var list_num = 10;
+            var count = json[0].count;
+            var page_num= Math.ceil(count/list_num);
+            //页数
+            var list='<li title="1" class="top_page">首页</li><li title="1" class="prev">上一页</li><li class="highlight" title="1">1</li>';
+            //判断总页数是否大于1，大于1就加载，如果不是就不加载
+            if(page_num>1){
+                var max_page_num =6;   //最大的显示是6，
+                if(page_num>max_page_num){
+                    for(var i=2;i<=max_page_num;i++){
+                        list+='<li title="'+i+'">'+i+'</li>';
+                    }
+                }else{
+                    for(var i=2;i<=page_num;i++){
+                        list+='<li title="'+i+'">'+i+'</li>';
+                    }
+                }
+                list+='<li title="2" class="next">下一页</li><li title="'+page_num+'"  class="bottom_page">尾页</li><li class="jump_li"><input type="text" value="0" class="jump_num"><input type="button" value="跳转" class="jump"></li><li>共<span>'+page_num+'</span>页</li><div class="clear_float"></div>';
+                $('.home_bottom ul.list').html(list);
+            } else{
+                $('.home_bottom ul.list').html(' ');
+            }
+            add_follow_list($('.home_bottom .content'),json,show_type);
+
+            //跳转页数
+            $('.home_bottom ul.list li').click(function (){
+                var _this = this;
+                //数字跳转
+                if(!!(+$(this).html())){
+                    var title=$(this).addClass('highlight').siblings().removeClass('highlight').end().attr('title');
+                    title=+title;
+                    page_event(_this,title,page_num,show_type);
+                }else if($(this).hasClass('prev') || $(this).hasClass('next')){         //上下页跳转
+                    var index = +$(this).attr('title');
+                    $(this).parent().find('li:contains('+index+')').eq(0).addClass('highlight').siblings().removeClass('highlight');
+                    page_event(_this,index,page_num,show_type);
+                }else if($(this).hasClass('top_page') || $(this).hasClass('bottom_page')){            //首页和尾页
+                    var top_index_bottom = +$(this).attr('title');
+                    var length = $(this).parent().find('li').size();
+                    if(top_index_bottom===1){                   //首页
+                        $(this).parent().find('li').eq(2).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
+                        if(length === 12){
+                          for(var i=3;i<8;i++){
+                            $(this).parent().find('li').eq(i).html(top_index_bottom+(i-2)).attr('title',top_index_bottom+(i-2));
+                          }
+                        }
+                    }else if(top_index_bottom === page_num){      //尾页
+                        if(length === 12){
+                          for(var i=2;i<7;i++){
+                            $(this).parent().find('li').eq(i).html(top_index_bottom+(i-7)).attr('title',top_index_bottom+(i-7));
+                          }
+                        }
+                        $(this).parent().find('li').eq(length-5).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
+                    }
+                    page_event(_this,top_index_bottom,page_num,show_type);
+                }else{                        //输入跳转
+                    $('.home_bottom ul.list li.jump_li input:first-child').bind('input',function (){
+                        var value= $(this).val();
+                        $(this).val(value.replace(/\D+/g,''));
+                        value = +$(this).val();
+                        var num=page_num;
+                        if(value>num){
+                            $(this).val(num);
+                        }
+                    }).next().click(function (e){
+                        if(page_num>6){
+                            var value = +$(this).prev().val();
+                            page_event(_this,value,page_num,show_type);
+                            if(value-3<=0){
+                                $(_this).parent().find('li').eq(2).html(value).attr('title',value).addClass('highlight').siblings().removeClass('highlight');
+                                for(var i=3;i<8;i++){
+                                    $(_this).parent().find('li').eq(i).html(value+(i-2)).attr('title',value+(i-2));
+                                }
+                            }else if(value+2>page_num){
+                                for(var i=2;i<7;i++){
+                                    $(_this).parent().find('li').eq(i).html(value+(i-7)).attr('title',value+(i-7));
+                                }
+                                $(_this).parent().find('li').eq(7).html(value).attr('title',value).addClass('highlight').siblings().removeClass('highlight');
+                            }else{
+                                $(_this).parent().find('li').eq(5).html(value).attr('title',value).addClass('highlight').siblings().removeClass('highlight');
+                                for(var i=1;i<3;i++){
+                                    $(_this).parent().find('li').eq((5+i)).html(value+i).attr('title',value+i);
+                                }
+                                for(var i=1;i<4;i++){
+                                    $(_this).parent().find('li').eq((5-i)).html(value-i).attr('title',value-i);
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+
+        });
+
+        function page_event(_this,index,page_num,show_type){
+            $.post('config/follow.php',{'limit':index,'type':'show','show_type':show_type,'user_id':user_id},function (responseText){
+                var json=$.parseJSON(responseText);
+                add_follow_list($(_this).parent().prev(),json,show_type);
+                //点击时，改变上下页的title
+                $(_this).parent().find('.prev').attr('title',(index-1>0?index-1:1)).end().parent().find('.next').attr('title',(index+1<page_num?index+1:page_num));
+                var parent = $(_this).parent();
+                var num=parent.find('li:contains('+index+')').eq(0).index();
+                if(num>6 && index+1<=page_num){
+                    parent.find('li.next').before(parent.find('li').eq(2).html(index+1).attr('title',index+1));
+                }else if(num<3 && index-1>0){
+                    parent.find('li.prev').after(parent.find('li').eq(7).html(index-1).attr('title',index-1));
+                }
+            });
+        }
+    }
+    //增加关注内容
+    function add_follow_list(obj,json,show_type){
+        var html='';
+        var follow="";  //存储关注按钮
+        if(show_type === 'follow' && true_false()){          //判断显示的类型
+          var follow = '<ul class="follow"><li class="already">取消关注</li></ul>';
+        }
+        for(var i=0;i<json.length;i++){
+            html+='<li><ul><li><a href="./home.php?user_id='+json[i].id+'"><img src="images/'+json[i].top_img+'"></a></li><li><a href="./home.php?user_id='+json[i].id+'">'+json[i].username+'</a></li><li user_id="'+json[i].id+'">'+follow+'</li></ul></li>';
+        }
+        //点击增加阅读数
+        $('.follow_list').html(html);
+    }
+
     //加载数据
     function load_forum(){
         $.post('config/show_forum.php',{'show_type':'user_forum','user_id':user_id},function (responseText){
@@ -119,16 +323,21 @@ $(function (){
                     page_event(_this,index,page_num);
                 }else if($(this).hasClass('top_page') || $(this).hasClass('bottom_page')){            //首页和尾页
                     var top_index_bottom = +$(this).attr('title');
+                    var length = $(this).parent().find('li').size();
                     if(top_index_bottom===1){                   //首页
                         $(this).parent().find('li').eq(2).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
-                        for(var i=3;i<8;i++){
+                        if(length === 12){
+                          for(var i=3;i<8;i++){
                             $(this).parent().find('li').eq(i).html(top_index_bottom+(i-2)).attr('title',top_index_bottom+(i-2));
+                          }
                         }
                     }else if(top_index_bottom === page_num){      //尾页
-                        for(var i=2;i<7;i++){
+                        if(length === 12){
+                          for(var i=2;i<7;i++){
                             $(this).parent().find('li').eq(i).html(top_index_bottom+(i-7)).attr('title',top_index_bottom+(i-7));
+                          }
                         }
-                        $(this).parent().find('li').eq(7).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
+                        $(this).parent().find('li').eq(length-5).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
                     }
                     page_event(_this,top_index_bottom,page_num);
                 }else{                        //输入跳转
@@ -212,7 +421,7 @@ $(function (){
         });
     }
 
-    //加载留言数据
+    //加载留言数据''
     function load_msg(){
         $(window).load('config/message.php',{'type':'show','user_id':user_id},function (responseText){
             var json=$.parseJSON(responseText);
@@ -254,16 +463,21 @@ $(function (){
                     page_event(_this,index,page_num);
                 }else if($(this).hasClass('top_page') || $(this).hasClass('bottom_page')){            //首页和尾页
                     var top_index_bottom = +$(this).attr('title');
+                    var length = $(this).parent().find('li').size();
                     if(top_index_bottom===1){                   //首页
                         $(this).parent().find('li').eq(2).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
-                        for(var i=3;i<8;i++){
+                        if(length === 12){
+                          for(var i=3;i<8;i++){
                             $(this).parent().find('li').eq(i).html(top_index_bottom+(i-2)).attr('title',top_index_bottom+(i-2));
+                          }
                         }
                     }else if(top_index_bottom === page_num){      //尾页
-                        for(var i=2;i<7;i++){
+                        if(length === 12){
+                          for(var i=2;i<7;i++){
                             $(this).parent().find('li').eq(i).html(top_index_bottom+(i-7)).attr('title',top_index_bottom+(i-7));
+                          }
                         }
-                        $(this).parent().find('li').eq(7).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
+                        $(this).parent().find('li').eq(length-5).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
                     }
                     page_event(_this,top_index_bottom,page_num);
                 }else{                        //输入跳转
@@ -375,16 +589,21 @@ $(function (){
                     page_event(_this,index,page_num);
                 }else if($(this).hasClass('top_page') || $(this).hasClass('bottom_page')){            //首页和尾页
                     var top_index_bottom = +$(this).attr('title');
+                    var length = $(this).parent().find('li').size();
                     if(top_index_bottom===1){                   //首页
                         $(this).parent().find('li').eq(2).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
-                        for(var i=3;i<8;i++){
+                        if(length === 12){
+                          for(var i=3;i<8;i++){
                             $(this).parent().find('li').eq(i).html(top_index_bottom+(i-2)).attr('title',top_index_bottom+(i-2));
+                          }
                         }
                     }else if(top_index_bottom === page_num){      //尾页
-                        for(var i=2;i<7;i++){
+                        if(length === 12){
+                          for(var i=2;i<7;i++){
                             $(this).parent().find('li').eq(i).html(top_index_bottom+(i-7)).attr('title',top_index_bottom+(i-7));
+                          }
                         }
-                        $(this).parent().find('li').eq(7).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
+                        $(this).parent().find('li').eq(length-5).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
                     }
                     page_event(_this,top_index_bottom,page_num);
                 }else{                        //输入跳转
@@ -510,16 +729,21 @@ $(function (){
                     page_event(_this,index,page_num);
                 }else if($(this).hasClass('top_page') || $(this).hasClass('bottom_page')){            //首页和尾页
                     var top_index_bottom = +$(this).attr('title');
+                    var length = $(this).parent().find('li').size();
                     if(top_index_bottom===1){                   //首页
                         $(this).parent().find('li').eq(2).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
-                        for(var i=3;i<8;i++){
+                        if(length === 12){
+                          for(var i=3;i<8;i++){
                             $(this).parent().find('li').eq(i).html(top_index_bottom+(i-2)).attr('title',top_index_bottom+(i-2));
+                          }
                         }
                     }else if(top_index_bottom === page_num){      //尾页
-                        for(var i=2;i<7;i++){
+                        if(length === 12){
+                          for(var i=2;i<7;i++){
                             $(this).parent().find('li').eq(i).html(top_index_bottom+(i-7)).attr('title',top_index_bottom+(i-7));
+                          }
                         }
-                        $(this).parent().find('li').eq(7).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
+                        $(this).parent().find('li').eq(length-5).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
                     }
                     page_event(_this,top_index_bottom,page_num);
                 }else{                        //输入跳转
@@ -581,7 +805,7 @@ $(function (){
     function user_add_list(obj,json){
         var html='<table class="home_bottom-forum" cellspacing="0" cellpadding="0"><tr><td><input type="checkbox" name="check_All" class="check_All" id="all"><label for="all">全选/全不选</label></td><td style="width:10%">头像</td><td style="width:10%">用户名</td><td>最近登录</td><td style="width:10%">注册时间</td><td  colspan="3">操作</td> </tr>';
         for(var i=0;i<json.length;i++){
-            html+='<tr user_id="'+json[i].id+'"><td><input type="checkbox" name="table_check" class="table_check"></td><td style="width:10%;text-align:center;"><img src="images/'+json[i].top_img+'" alt=""></td><td style="width:10%">'+json[i].username+'/'+json[i].type+''+(json[i].game_name !=''?'/'+json[i].game_name:'')+'</td><td>'+json[i].login_date+'</td><td>'+json[i].date+'</td><td style="width:2%"><a href="home.php?user_id='+json[i].id+'">查看</a></td><td style="width:2%" class="user_del">删除</td><td style="width:3%" class="admin">管理员</td></tr>';
+            html+='<tr user_id="'+json[i].id+'"><td><input type="checkbox" name="table_check" class="table_check"></td><td style="width:10%;text-align:center;"><img src="images/'+json[i].top_img+'" alt="" style="width:70px;height:70px;"></td><td style="width:10%">'+json[i].username+'/'+json[i].type+''+(json[i].game_name !=''?'/'+json[i].game_name:'')+'</td><td>'+json[i].login_date+'</td><td>'+json[i].date+'</td><td style="width:2%"><a href="home.php?user_id='+json[i].id+'">查看</a></td><td style="width:2%" class="user_del">删除</td><td style="width:3%" class="admin">管理员</td></tr>';
         }
         html+='</table>'+(true_false()?'<input type="button" name="user_del_select" class="user_del_select" value="删除选中">':'');
         // alert(html);
@@ -632,16 +856,21 @@ $(function (){
                     page_event(_this,index,page_num);
                 }else if($(this).hasClass('top_page') || $(this).hasClass('bottom_page')){            //首页和尾页
                     var top_index_bottom = +$(this).attr('title');
+                    var length = $(this).parent().find('li').size();
                     if(top_index_bottom===1){                   //首页
                         $(this).parent().find('li').eq(2).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
-                        for(var i=3;i<8;i++){
+                        if(length === 12){
+                          for(var i=3;i<8;i++){
                             $(this).parent().find('li').eq(i).html(top_index_bottom+(i-2)).attr('title',top_index_bottom+(i-2));
+                          }
                         }
                     }else if(top_index_bottom === page_num){      //尾页
-                        for(var i=2;i<7;i++){
+                        if(length === 12){
+                          for(var i=2;i<7;i++){
                             $(this).parent().find('li').eq(i).html(top_index_bottom+(i-7)).attr('title',top_index_bottom+(i-7));
+                          }
                         }
-                        $(this).parent().find('li').eq(7).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
+                        $(this).parent().find('li').eq(length-5).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
                     }
                     page_event(_this,top_index_bottom,page_num);
                 }else{                        //输入跳转
@@ -710,9 +939,6 @@ $(function (){
         //点击增加阅读数
         obj.html(html);
     }
-
-
-
 
     /*全选/全不选*/
     $('.home_bottom .content').on('click','.check_All',function (){
@@ -1003,17 +1229,16 @@ $(function (){
             'cookie_username':cookie_username,
             'cookie_password':cookie_password
         },function (data){
-
             var array = true_false()?data.split('?'):[];
             if(array[0] === '超级管理员'){
                 var ul = $('.home_middle .home_middle-nav ul');
-                if(ul.find('li').size()<4){
-                    ul.css('width','490px').append('<li>用户</li>\<li>游戏</li>');
+                if(ul.find('li').size()<6){
+                    ul.append('<li>用户</li>\<li>游戏</li>');
                 }
             }else if(array[0] === '管理员'){
                 var ul = $('.home_middle .home_middle-nav ul');
-                if(ul.find('li').size()<4){
-                    ul.css('width','400px').append('<li>全部帖子</li>');
+                if(ul.find('li').size()<6){
+                    ul.append('<li>全部帖子</li>');
                 }
             }
             var str = true_false()?array[1]:data;
@@ -1027,12 +1252,26 @@ $(function (){
                 sum_exp+=Math.pow(2,i);
             }
             var ratio = Math.floor((exp/sum_exp)*100);
-            $('.home_middle .home_middle-user_info .top_img').css('background','url(images/'+json.top_img+')');
+            $('.home_middle .home_middle-user_info .top_img').css('background','url(images/'+json.top_img+') 100% 100%/100% 100%');
             $('.home_middle .home_middle-user_info .username').html(json.nickname);
             $('.home_middle .home_middle-user_info .lv li:nth-child(1) span').html(lv);
             $('.home_middle .home_middle-user_info .lv li:nth-child(2)').attr('title',exp+'/'+sum_exp).find('span').width(ratio+'%');
             $('.home_middle .home_middle-user_info .description').html(json.description);
             $('.alter_top_img img').attr('src','images/'+json.top_img);
+
+            //编辑资料框的赋值
+            $('.edit_form #nickname').val(json.nickname);
+            $('.edit_form #age').val(json.age);
+            $('.edit_form #birth_date').val(json.birth_date);
+            $('.edit_form #email').val(json.email);
+            $('.edit_form #phone').val(json.phone);
+            $('.edit_form #address').val(json.address);
+            $('.edit_form #description').val(json.description);
+            if(json.sex === '男'){
+                $('.edit_form input[name=sex]').eq(0).prop('checked','true');
+            }else{
+                $('.edit_form input[name=sex]').eq(1).prop('checked','true');
+            }
 
         });
     }
@@ -1055,18 +1294,7 @@ $(function (){
         $('#shadow').fadeIn(400);
         document.documentElement.style.overflow='hidden';
         document.documentElement.scrollTop=0;
-        $('.edit_form #nickname').val($('.home_bottom-user_info ul li:eq(2) span').html());
-        $('.edit_form #age').val($('.home_bottom-user_info ul li:eq(5) span').html());
-        $('.edit_form #birth_date').val($('.home_bottom-user_info ul li:eq(6) span').html());
-        $('.edit_form #email').val($('.home_bottom-user_info ul li:eq(7) span').html());
-        $('.edit_form #phone').val($('.home_bottom-user_info ul li:eq(8) span').html());
-        $('.edit_form #address').val($('.home_bottom-user_info ul li:eq(9) span').html());
-        $('.edit_form #description').val($('.home_bottom-user_info ul li:eq(10) span').html());
-        if($('.home_bottom-user_info ul li:eq(4) span').html() === '男'){
-            $('.edit_form input[name=sex]').eq(0).prop('checked','true');
-        }else{
-            $('.edit_form input[name=sex]').eq(1).prop('checked','true');
-        }
+
     }
     $('.edit_info .close').click(function (){
         $('.edit_info').fadeOut(400);
@@ -1572,7 +1800,7 @@ $(function (){
         var privacy = '';
         var array = $('.privacy').serialize().split('&');
         for(var i=0;i<array.length;i++){
-            privacy +=(array[i].split('='))[0]+','
+            privacy +=(array[i].split('='))[0]+',';
         }
         privacy = privacy.substring(0,(privacy.length)-1);
         $.ajax({
@@ -1732,11 +1960,10 @@ $(function (){
                 }else{
                     alert('游戏已存在！！');
                 }
-
             });
         }else{
             alert('第二个表单必须要中文名！！！');
         }
 
-    })
+    });
 });

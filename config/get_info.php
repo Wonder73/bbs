@@ -34,4 +34,3 @@
         }
         echo urldecode(json_encode($row));
     }
-

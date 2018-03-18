@@ -8,15 +8,12 @@
     .document-width{width:90%;}
     /*发帖的图片*/
     .forum_body-right .post_msg img{width:75%;}
-    .content li{margin:0;}
 
     /*热门评论*/
     .zj_1{width:250px;}
 }
 
 @media only screen and (max-width: 1280px) {
-    .content li{margin:2%;}
-    .content {width:80%;}
     /*热门评论*/
     .zj_1{width:200px;}
 }
@@ -39,9 +36,6 @@
     /*发帖*/
     .forum_body-right .post_msg img{width:100%;}
 
-    .content li{margin:2%;}
-    .content {width:90%;}
-
     /*导航条*/
     ul.pc_menu li{padding:0 6px;}
     ul.pc_menu li p{font-size:16px;}
@@ -63,6 +57,9 @@
     /*轮播图*/
     .index_top{height:400px;}
 
+    /*基本资料*/
+    .home_bottom .home_bottom-user_info{width:60%;}
+
 
 }
 
@@ -70,8 +67,6 @@
     .search{width:18%;}
     .top_big2 div.search_div .search_list{width:203px;}
     /*游戏*/
-    .content li{margin:1%;}
-    .content {width:100%;}
 
 }
 
@@ -85,11 +80,14 @@
     /*导航条*/
     ul.pc_menu li{padding:0 12px;}
 
+    /*基本资料*/
+    .home_bottom .home_bottom-user_info{width:80%;}
+
 }
 
 @media only screen and (max-width: 800px) {
     /*游戏*/
-    .content li{margin:0.5%;}
+    .home_middle .home_middle-nav{width:100%;}
 }
 @media only screen and (max-width: 750px) {
 
@@ -107,11 +105,14 @@
 
     /*轮播图*/
     .index_top{height:280px;}
-    /*游戏*/
-    .content li{margin:0;}
+
 
     /*所有游戏*/
     .game_list ul.game_title>li .game_info{width:60%;}
+
+    /*用户头像*/
+    .home_middle .home_middle-user_info{top:-45px;}
+    .home_middle .home_middle-user_info .top_img{width:80px;height:80px;}
 
 }
 
@@ -119,8 +120,9 @@
     /*发帖框*/
     .editor_msg{width:90%;}
 
-    /*游戏*/
-    .content li{width:100%;}
+    /*home页面关注页的关注按钮*/
+    .home_bottom .follow_list>li>ul>li:nth-child(3) li{width:70px;}
+
 }
 
 @media only screen and (max-width: 700px) {
@@ -149,13 +151,12 @@
 @media only screen and (max-width: 680px) {}
 
 @media only screen and (max-width: 650px) {
-
+    /*基本资料*/
+    .home_bottom .home_bottom-user_info{width:90%;}
     /*留言板*/
     ul.message{width:100%;}
-   /* div.post_msg input.con_message{width:50%;height:36px;font-size:14px;color:#444;text-indent:8px;border:1px solid #ccc;border-radius:4px 0 0 4px;border-right:none;}
-    */div.post_msg input.msg_but{width:20%;}
-      /*home导航条*/
-    .home_middle .home_middle-nav{margin-left:0;}
+    div.post_msg input.con_message{width:70%;}
+    div.post_msg input.msg_but{width:20%;}
 }
 
 @media only screen and (max-width: 620px) {}
@@ -169,6 +170,10 @@
     .forum_body-detail .end_opp ul{width:50%;}
     /*权限*/
     .root{width:100%;}
+
+    /*用户编辑资料和修改头像*/
+    .edit_info,.alter_top_img{width:100%;}
+    .alter_top_img img{width:60px;height:60px;margin:10px;}
 }
 
 @media only screen and (max-width: 500px) {
@@ -192,11 +197,11 @@
 @media only screen and (max-width: 480px) {
     /*登录框*/
     .login{width:100%;}
+
+    .home_bottom .content ul.follow_already{width:90%;}
 }
 
 @media only screen and (max-width: 440px) {
-    /*基本资料*/
-    .home_bottom .home_bottom-user_info{width:90%;}
     /*添加游戏*/
     .game input{width:100%;}
     .game textarea{width:100%;}
@@ -221,14 +226,16 @@
     /*留言板*/
     .home_top .home_top-ul{position:absolute;top:10px;right:0;left:0;color:#999;}
     .home_top{height:150px;}
-
-    /*home导航条*/
-    .home_middle .home_middle-nav li{margin:0 20px;}
     /*轮播图*/
     .index_top{height:200px;}
     /*所有游戏*/
     .game_list ul.game_title>li .game_info{width:60%;}
     .game_list ul.game_title>li .game_info h3{height:20px;}
+
+    /*编辑资料的输入框*/
+    #edit_inputs input, #password_inputs input,#edit_inputs textarea{
+      width:190px;
+    }
 }
 @media only screen and (max-width:350px){
     /*帖子信息*/
@@ -238,13 +245,9 @@
     /*登录框*/
     .login #inputs{width:100%;padding:0;}
     .login #inputs #username,.login #inputs #password{width:100%;}
-    /*home导航条*/
-    .home_middle .home_middle-nav li{margin:0 10px;}
     /*轮播图*/
     .index_top{height:180px;}
 
-    /*游戏*/
-    .content li{width:100%;}
 
     /*首页的帖子导航*/
     #postamount li{padding: 0 10px;}
@@ -257,5 +260,12 @@
 
     /*轮播图*/
     .index_top{height:180px;}
+
+    /*home中部的信息*/
+    .home_middle .home_middle-user_info{padding:0;width:100%;}
+    .home_middle .home_middle-user_info ul.lv{margin:0 auto;width:180px;}
+    .home_middle .home_middle-user_info ul.edit{margin:0 auto;width:270px;}
+    .home_middle .home_middle-user_info ul.edit li:first-child,.home_middle .home_middle-user_info ul.edit li{margin:5px;}
+
 
 }
