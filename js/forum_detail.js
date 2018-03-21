@@ -351,7 +351,7 @@ $(function (){
         }
     });
     function end_opp(type){
-        $(window).load('config/end_opp',{'type':type,'game_id':game_id,'user_id':cookie_id,'forum_id':forum_id},function (responseText){
+        $(window).load('config/end_opp.php',{'type':type,'game_id':game_id,'user_id':cookie_id,'forum_id':forum_id},function (responseText){
             if(responseText>0){
                 //loading居中
                 center($('.loading'));
@@ -375,5 +375,43 @@ $(function (){
             }
         });
     }
+
+    //收藏
+    $('.end_opp ul li:nth-child(4)').click(function (){
+      var _this = this;
+      if(ver_login()){
+        if(user_id !== cookie_id){
+          $.post("config/collect.php",{cookie_id,forum_id,type:"collect"},function (responseText){
+            if(responseText !== "0"){
+              center($('.loading'))
+              $('.loading').show();
+              $('.loading').css('background','#fff url(images/green.png) no-repeat 0 center');
+              $('.loading').html('收藏成功！！！');
+              $(_this).attr('disabled','disabled');
+              setTimeout(function (){
+                  $('.loading').fadeOut(500);
+                  $(_this).removeAttr('disabled')
+              },1000);
+            }else{
+              center($('.loading'))
+              $('.loading').show();
+              $('.loading').css('background','#fff url(images/info.png) no-repeat 0 center');
+              $('.loading').html('您已经收藏了！！！');
+              setTimeout(function (){
+                  $('.loading').fadeOut(500);
+              },1000);
+            }
+          });
+        }else{
+          center($('.loading'))
+          $('.loading').show();
+          $('.loading').css('background','#fff url(images/info.png) no-repeat 0 center');
+          $('.loading').html('不可收藏自己的帖子！！！');
+          setTimeout(function (){
+              $('.loading').fadeOut(500);
+          },1000);
+        }
+      }
+    });
 
 });

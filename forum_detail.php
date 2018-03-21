@@ -8,7 +8,7 @@
     $sql = "select game_id,game_name_cn from game where game_id={$game_id}";
     $res = mysql_query($sql);
     $game_info = mysql_fetch_assoc($res);
-    $sql = "select nickname as username,type,top_img,title,forum_content,replay,comment,end,opp,forum.date,forum.user_id from forum,user where forum.user_id=user.user_id and forum_id={$forum_id} and forum.user_id ={$user_id}";
+    $sql = "select nickname as username,type,top_img,title,forum_content,replay,comment,end,opp,forum.date,forum.user_id,collect from forum,user where forum.user_id=user.user_id and forum_id={$forum_id} and forum.user_id ={$user_id}";
     $res = mysql_query($sql);
     $forum_info = mysql_fetch_assoc($res);
 ?>
@@ -40,6 +40,7 @@
                     <li><img src="images/rec_add.png" alt="">赞同<span><?php echo $forum_info['end'];?></span></li>
                     <li><img src="images/rec_subtract.png" alt="">反对<span><?php echo $forum_info['opp'];?></span></li>
                     <li><img src="images/zhuanbo.png" alt="">评论</li>
+                    <li><img src="images/collect.png" alt="">收藏<?php echo $forum_info['collect'];?></span></li>
                     <div class="clear_float"></div>
                 </ul>
             </div><!--end_opp-->

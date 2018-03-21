@@ -47,8 +47,7 @@
 
     /*楼主信息*/
     .forum_body-left ul.forum_title>li .user_info{width:80%;}
-    /*帖子的电赞*/
-    .forum_body-detail .end_opp ul{width:40%;}
+
     /*发帖框*/
     .editor_msg{width:80%;}
 
@@ -167,7 +166,6 @@
 }
 
 @media only screen and (max-width: 550px) {
-    .forum_body-detail .end_opp ul{width:50%;}
     /*权限*/
     .root{width:100%;}
 

@@ -160,7 +160,6 @@ $(function (){
             types='';
         }
         $(window).load('config/show_forum.php',{'game_id':game_id,'type':types,show_type:'forum'},function (responseText){
-          alert(responseText);
             var json=$.parseJSON(responseText);
             var list_num = 10;
             var count = json[0].count;

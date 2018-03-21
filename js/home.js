@@ -46,7 +46,7 @@ $(function (){
     }
     /*判断是不是自己进入自己的空间*/
     function true_false(){
-        if(cookie_id == 1){
+        if(getCookie('userType') == '超级管理员'){
             return true;
         }else{
             if(user_id === cookie_id){
@@ -104,21 +104,26 @@ $(function (){
     $('.home_middle .home_middle-nav').on('click','li',function (){
         $(this).addClass('highlight').siblings().removeClass('highlight');
         var index = $(this).index();
-        if(index === 0){
+        if(index === 0){       //首页
             index_user_info();
             $('.home_bottom ul.list').html('');
             $('.home_bottom .follow_list').html('');
-        }else if(index === 1){
+        }else if(index === 1){       //帖子
             load_forum();
             $('.home_bottom ul.list').html('');
             $('.home_bottom .content').html('');
             $('.home_bottom .follow_list').html('');
-        }else if(index === 2){
+        }else if(index === 2){        //留言
             $('.home_bottom ul.list').html('');
             $('.home_bottom .follow_list').html('');
             $('.home_bottom .content').html('<div class="post_msg"><input type="text" name="con_message" class="con_message" placeholder="输入你要对我的话！！！"><input type="button" name="msg_but" class="msg_but" value="留言"></div>');
             load_msg();
-        }else if(index === 4){
+        }else if(index === 3){        //收藏
+            $('.home_bottom ul.list').html('');
+            $('.home_bottom .content').html('');
+            $('.home_bottom .follow_list').html('');
+            load_collect();
+        }else if(index === 4){        //关注
           $.post('config/follow.php',{user_id,cookie_id,'type':'count'},function (responseText){
             var arr = responseText.split(',');$('.home_bottom .content').html('<ul class="follow_already"><li class="select">关注的人<span>（'+arr[0]+'）</span></li><li>粉丝<span>（'+arr[1]+'）</span></li></ul>');
           });
@@ -127,7 +132,7 @@ $(function (){
             $('.home_bottom .content').after('<ul class="follow_list"></ul>');
           }
           load_follow('follow');
-        }else if(index === 5){
+        }else if(index === 5){       //用户或全部帖子
           $('.home_bottom .follow_list').html('');
           $('.home_bottom .content').html('');
             if($(this).html()==='用户'){
@@ -136,7 +141,7 @@ $(function (){
                 load_all();
             }
 
-        }else if(index === 6){
+        }else if(index === 6){        //游戏
           $('.home_bottom .follow_list').html('');
             $('.home_bottom .content').html('');
             load_game();
@@ -152,6 +157,130 @@ $(function (){
         load_follow('already');
       }
     });
+
+    //加载数据
+    function load_collect(){
+        $.post('config/collect.php',{'user_id':user_id,type:"showCollect"},function (responseText){
+            var json=$.parseJSON(responseText);
+            var list_num = 10;
+            var count = json[0].count;
+            var page_num= Math.ceil(count/list_num);
+            //页数
+            var list='<li title="1" class="top_page">首页</li><li title="1" class="prev">上一页</li><li class="highlight" title="1">1</li>';
+            //判断总页数是否大于1，大于1就加载，如果不是就不加载
+            if(page_num>1){
+                var max_page_num =6;   //最大的显示是6，
+                if(page_num>max_page_num){
+                    for(var i=2;i<=max_page_num;i++){
+                        list+='<li title="'+i+'">'+i+'</li>';
+                    }
+                }else{
+                    for(var i=2;i<=page_num;i++){
+                        list+='<li title="'+i+'">'+i+'</li>';
+                    }
+                }
+                list+='<li title="2" class="next">下一页</li><li title="'+page_num+'"  class="bottom_page">尾页</li><li class="jump_li"><input type="text" value="0" class="jump_num"><input type="button" value="跳转" class="jump"></li><li>共<span>'+page_num+'</span>页</li><div class="clear_float"></div>';
+                $('.home_bottom ul.list').html(list);
+            } else{
+                $('.home_bottom ul.list').html(' ');
+            }
+            add_collect_list($('.home_bottom .content'),json);
+
+            //跳转页数
+            $('.home_bottom ul.list li').click(function (){
+                var _this = this;
+                //数字跳转
+                if(!!(+$(this).html())){
+                    var title=$(this).addClass('highlight').siblings().removeClass('highlight').end().attr('title');
+                    title=+title;
+                    page_event(_this,title,page_num);
+                }else if($(this).hasClass('prev') || $(this).hasClass('next')){         //上下页跳转
+                    var index = +$(this).attr('title');
+                    $(this).parent().find('li:contains('+index+')').eq(0).addClass('highlight').siblings().removeClass('highlight');
+                    page_event(_this,index,page_num);
+                }else if($(this).hasClass('top_page') || $(this).hasClass('bottom_page')){            //首页和尾页
+                    var top_index_bottom = +$(this).attr('title');
+                    var length = $(this).parent().find('li').size();
+                    if(top_index_bottom===1){                   //首页
+                        $(this).parent().find('li').eq(2).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
+                        if(length === 12){
+                          for(var i=3;i<8;i++){
+                            $(this).parent().find('li').eq(i).html(top_index_bottom+(i-2)).attr('title',top_index_bottom+(i-2));
+                          }
+                        }
+                    }else if(top_index_bottom === page_num){      //尾页
+                        if(length === 12){
+                          for(var i=2;i<7;i++){
+                            $(this).parent().find('li').eq(i).html(top_index_bottom+(i-7)).attr('title',top_index_bottom+(i-7));
+                          }
+                        }
+                        $(this).parent().find('li').eq(length-5).html(top_index_bottom).attr('title',top_index_bottom).addClass('highlight').siblings().removeClass('highlight');
+                    }
+                    page_event(_this,top_index_bottom,page_num);
+                }else{                        //输入跳转
+                    $('.home_bottom ul.list li.jump_li input:first-child').bind('input',function (){
+                        var value= $(this).val();
+                        $(this).val(value.replace(/\D+/g,''));
+                        value = +$(this).val();
+                        var num=page_num;
+                        if(value>num){
+                            $(this).val(num);
+                        }
+                    }).next().click(function (e){
+                        if(page_num>6){
+                            var value = +$(this).prev().val();
+                            page_event(_this,value,page_num);
+                            if(value-3<=0){
+                                $(_this).parent().find('li').eq(2).html(value).attr('title',value).addClass('highlight').siblings().removeClass('highlight');
+                                for(var i=3;i<8;i++){
+                                    $(_this).parent().find('li').eq(i).html(value+(i-2)).attr('title',value+(i-2));
+                                }
+                            }else if(value+2>page_num){
+                                for(var i=2;i<7;i++){
+                                    $(_this).parent().find('li').eq(i).html(value+(i-7)).attr('title',value+(i-7));
+                                }
+                                $(_this).parent().find('li').eq(7).html(value).attr('title',value).addClass('highlight').siblings().removeClass('highlight');
+                            }else{
+                                $(_this).parent().find('li').eq(5).html(value).attr('title',value).addClass('highlight').siblings().removeClass('highlight');
+                                for(var i=1;i<3;i++){
+                                    $(_this).parent().find('li').eq((5+i)).html(value+i).attr('title',value+i);
+                                }
+                                for(var i=1;i<4;i++){
+                                    $(_this).parent().find('li').eq((5-i)).html(value-i).attr('title',value-i);
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+
+        });
+
+        function page_event(_this,index,page_num){
+            $.post('config/collect.php',{'limit':index,'user_id':user_id,type:"showCollect"},function (responseText){
+                var json=$.parseJSON(responseText);
+                add_collect_list($(_this).parent().prev(),json);
+                //点击时，改变上下页的title
+                $(_this).parent().find('.prev').attr('title',(index-1>0?index-1:1)).end().parent().find('.next').attr('title',(index+1<page_num?index+1:page_num));
+                var parent = $(_this).parent();
+                var num=parent.find('li:contains('+index+')').eq(0).index();
+                if(num>6 && index+1<=page_num){
+                    parent.find('li.next').before(parent.find('li').eq(2).html(index+1).attr('title',index+1));
+                }else if(num<3 && index-1>0){
+                    parent.find('li.prev').after(parent.find('li').eq(7).html(index-1).attr('title',index-1));
+                }
+            });
+        }
+    }
+    //增加内容
+    function add_collect_list(obj,json){
+        var html='';
+        for(var i=0;i<json.length;i++){
+            let title = json[i].title.length>20?json[i].title.slice(0,17)+'...':json[i].title;
+            html+='<ul class="collect"><li><a href="forum_detail.php?forum_id='+json[i].forum_id+'&game_id='+json[i].game_id+'&user_id='+json[i].user_id+'">'+title+'</a></li><li>'+json[i].date+'</li>'+(true_false()?'<li class="del_collect" forum_id="'+json[i].forum_id+'">删除</li>':'')+'</ul>';
+        }
+        obj.html(html);
+    }
 
     //加载关注数据
     function load_follow(show_type){
@@ -1055,27 +1184,28 @@ $(function (){
             });
         }
     }).on('click','.user_del_select',function (){          //删除选中的
+      if(confirm("你确定要删除这些用户吗！！！")){
         var table=$(this).prev();
         table.find('tr td:nth-child(1) input[name=table_check]').each(function (){
-            if($(this).prop('checked')){
-                var id=$(this).parent().parent().attr('user_id');
-                $.post('config/del_user.php',{
-                    'user_id':id
-                },function (data){
-                    load_user();
-                });
-            }
-
-
+          if($(this).prop('checked')){
+            var id=$(this).parent().parent().attr('user_id');
+            $.post('config/del_user.php',{
+              'user_id':id
+            },function (data){
+              load_user();
+            });
+          }
         });
+      }
     }).on('click','.user_del',function (){          //删除特定的
+      if(confirm("你确定要删除该用户吗！！！")){
         var id=$(this).parent().attr('user_id');
         $.post('config/del_user.php',{
-            'user_id':id
+          'user_id':id
         },function (data){
-            //alert(data);
-            load_user();
+          load_user();
         });
+      }
     }).on('click','.clear_head',function (){        //取消顶置
         var forum_id=$(this).parent().attr('forum_id');
         var game_id =$(this).parent().attr('game_id');
@@ -1102,37 +1232,46 @@ $(function (){
 
         });
     }).on('click','.game_del',function (){
+      if(confirm("你确定要删除这个游戏吗！！")){
         var id=$(this).parent().attr('game_id');
         var game_name=$(this).parent().attr('game_name');
         $.post('config/opera_game.php',{
-            'type':'del',
-            'game_id':id,
-            'game_name':game_name
+          'type':'del',
+          'game_id':id,
+          'game_name':game_name
         },function (data){
-            load_game();
+          load_game();
         });
+      }
     }).on('click','.game_del_select',function (){
+      if(confirm("你确定要删除这些游戏吗！！！")){
         var table=$(this).prev();
         table.find('tr td:nth-child(1) input[name=table_check]').each(function (){
-            if($(this).prop('checked')){
-                var id=$(this).parent().parent().attr('game_id');
-                var game_name=$(this).parent().parent().attr('game_name');
-                $.post('config/opera_game.php',{
-                    'type':'del',
-                    'game_id':id,
-                    'game_name':game_name
-                },function (data){
-                    load_game();
-                });
-            }
-
-
+          if($(this).prop('checked')){
+            var id=$(this).parent().parent().attr('game_id');
+            var game_name=$(this).parent().parent().attr('game_name');
+            $.post('config/opera_game.php',{
+              'type':'del',
+              'game_id':id,
+              'game_name':game_name
+            },function (data){
+              load_game();
+            });
+          }
         });
+      }
     }).on('click','.add_game',function (){
         $('.game').fadeIn(400);
         $('#shadow').fadeIn(400);
         document.documentElement.style.overflow='hidden';
         document.documentElement.scrollTop=0;
+    }).on('click','ul li.del_collect',function (){       //删除收藏
+      var forum_id = $(this).attr('forum_id');
+      $.post('config/collect.php',{forum_id,cookie_id,type:'uncollect'},function (responseText){
+        if(responseText === "1"){
+          location.reload();
+        }
+      });
     });
 
     $('.editor_msg .close').click(function (){

@@ -639,6 +639,7 @@ $(function (){
                             document.cookie='username='+json.username+expires;
                             document.cookie='password='+json.password+expires;
                              document.cookie='user_id='+json.user_id+expires;
+                             document.cookie='userType='+json.type+expires;
                              document.cookie='lv='+lv+expires;
                             $('#submit').parent().parent().get(0).reset();
                             location.reload();
@@ -703,6 +704,7 @@ $(function (){
         document.cookie='username="1";expires='+data;
         document.cookie='password="1";expires='+data;
         document.cookie='user_id="1";expires='+data;
+        document.cookie='userType="1";expires='+data;
         location.reload();
     });
 

@@ -10,7 +10,7 @@
         $captcha = !empty($_POST['captcha'] != '')?$_POST['captcha']:'';
         $date = date('Y-m-d');
 
-        $sql = "select user_id,username,password,exp from user where username='{$username}' or email='{$username}' or phone='{$username}'";
+        $sql = "select user_id,username,password,exp,type from user where username='{$username}' or email='{$username}' or phone='{$username}'";
         $res = mysql_query($sql);
 
         if(!empty($captcha)){
@@ -73,6 +73,3 @@
             echo -1;
         }
     }
-
-
-

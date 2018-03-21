@@ -28,13 +28,11 @@
 
     $sql = '';
     if($show_type === 'follow'){       //关注的人
-      //$sql = "select (select COUNT(*) from follow where user_id={$userId}) as count,follow_user_id as id,username,nickname,top_img from follow,user where follow.follow_user_id=user.user_id and follow.user_id={$userId} order by date desc {$limit}";
-      $sql = "select (select COUNT(*) from follow where user_id={$userId}) as count,follow_user_id as id,username,nickname,top_img from follow,user where follow.follow_user_id=user.user_id and follow.user_id={$userId} order by date desc {$limit}";
+      $sql = "select (select COUNT(*) from follow where user_id={$userId}) as count,follow_user_id as id,username,nickname,top_img from follow,user where follow.follow_user_id=user.user_id and follow.user_id={$userId} order by follow.date desc {$limit}";
     }else if($show_type === 'already'){    //被关注的人
-      $sql = "select (select COUNT(*) from follow where follow_user_id={$userId}) as count,follow.user_id as id,username,nickname,top_img from follow,user where follow.user_id=user.user_id and follow_user_id={$userId} order by date desc {$limit}";
+      $sql = "select (select COUNT(*) from follow where follow_user_id={$userId}) as count,follow.user_id as id,username,nickname,top_img from follow,user where follow.user_id=user.user_id and follow_user_id={$userId} order by follow.date desc {$limit}";
     }
     $res = mysql_query($sql);
-    if(mysql_affected_rows()<=0) echo $sql;
     $info = "";
     while($row = mysql_fetch_assoc($res)){
       foreach($row as $k=>$v){
