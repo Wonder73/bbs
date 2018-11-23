@@ -158,7 +158,13 @@ $(function (){
       }
     });
 
-    //加载数据
+    //点击迷你搜索
+    $('.home_bottom').on('click',' .mini_search li:last-child input',function (){
+      var search_val = $(this).parent().prev().find('input').val();
+      alert(search_val);
+    });
+
+    //加载收藏数据
     function load_collect(){
         $.post('config/collect.php',{'user_id':user_id,type:"showCollect"},function (responseText){
             var json=$.parseJSON(responseText);
@@ -272,7 +278,7 @@ $(function (){
             });
         }
     }
-    //增加内容
+    //增加收藏内容
     function add_collect_list(obj,json){
         var html='';
         for(var i=0;i<json.length;i++){
@@ -531,6 +537,7 @@ $(function (){
             html+='<tr forum_id="'+json[i].id+'" game_id="'+json[i].game_id+'" game_name="'+json[i].name+'">'+(true_false()?'<td><input type="checkbox" name="table_check" class="table_check"></td>':'<td  width="0"></td>')+'<td><a href="forum_detail.php?forum_id='+json[i].id+'&game_id='+json[i].game_id+'&user_id='+user_id+'">'+json[i].title+'</a></td><td>'+json[i].game_name_cn+'</td><td>'+json[i].comment+'/'+json[i].replay+'</td><td>'+json[i].date+'</td>'+(true_false()?'<td class="edit_user-forum">编辑</td><td class="del_user-forum">删除</td>':"<td></td>")+'</tr>';
         }
         html+='</table>'+(true_false()?'<input type="button" name="del_select" class="del_select" value="删除选中">':'');
+        html+='<ul class="mini_search"><li><input type="text"></li><li><input type="button" value="搜索"></li></ul>'
         //alert(html);
         //点击增加阅读数
         obj.html(html).find('table tr td:nth-child(2)').click(function (){

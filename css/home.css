@@ -1110,3 +1110,33 @@ ul.message li .msg_info p:first-child span.date{
     background: #79bc1f;
     cursor: pointer;
 }
+/*home页面的搜索功能*/
+.home_bottom .mini_search{
+  float:right;
+  display:flex;
+  align-items: stretch;
+  margin-right:20px;
+  width:200px;
+  height:25px;
+  border:1px solid #ccc;
+  border-radius:4px;
+  overflow:hidden;
+}
+.home_bottom .mini_search li{
+  flex:7;
+}
+.home_bottom .mini_search li:last-child{
+  flex:3;
+
+}
+.home_bottom .mini_search li input{
+  border:none;
+  width:100%;
+  height:100%;
+  text-indent:12px;
+}
+.home_bottom .mini_search li:last-child input{
+  text-indent:0;
+  color:#333;
+  cursor:pointer;
+}

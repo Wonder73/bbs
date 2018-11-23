@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d11f291d-0f9d-4683-8c15-fa35a1a55acf" name="默认的" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/bottom.php" afterPath="$PROJECT_DIR$/bottom.php" />
-      <change beforePath="$PROJECT_DIR$/config/show_forum.php" afterPath="$PROJECT_DIR$/config/show_forum.php" />
-      <change beforePath="$PROJECT_DIR$/css/home.css" afterPath="$PROJECT_DIR$/css/home.css" />
-      <change beforePath="$PROJECT_DIR$/css/media.css" afterPath="$PROJECT_DIR$/css/media.css" />
-      <change beforePath="$PROJECT_DIR$/home.php" afterPath="$PROJECT_DIR$/home.php" />
-      <change beforePath="$PROJECT_DIR$/images/33_avatar.jpg" afterPath="$PROJECT_DIR$/images/33_avatar.jpg" />
-      <change beforePath="$PROJECT_DIR$/js/forum.js" afterPath="$PROJECT_DIR$/js/forum.js" />
-      <change beforePath="$PROJECT_DIR$/js/forum_detail.js" afterPath="$PROJECT_DIR$/js/forum_detail.js" />
-      <change beforePath="$PROJECT_DIR$/js/game_list.js" afterPath="$PROJECT_DIR$/js/game_list.js" />
-      <change beforePath="$PROJECT_DIR$/js/home.js" afterPath="$PROJECT_DIR$/js/home.js" />
-      <change beforePath="$PROJECT_DIR$/js/public.js" afterPath="$PROJECT_DIR$/js/public.js" />
-      <change beforePath="$PROJECT_DIR$/js/search.js" afterPath="$PROJECT_DIR$/js/search.js" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum.php" beforeDir="false" afterPath="$PROJECT_DIR$/forum.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/home.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,9 +20,11 @@
     <option name="GROUP_SCHEMA" value="true" />
     <option name="GROUP_CONTENTS" value="false" />
     <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
     <expand>
       <path>
         <item name="数据库" type="3277223f:DatabaseStructure$DbRootGroup" />
@@ -56,84 +49,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="forum" pinned="false" current-in-tab="false">
-        <entry file="das://table:/f9f42aa3/dd98ecd3-811b-409e-a046-c445e2027add/bbs.forum">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forum.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/forum.php">
+      <file leaf-file-name="bottom.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bottom.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="28" column="64" lean-forward="false" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
-              <folding>
-                <marker date="1519568087465" expanded="true" signature="297:334" ph="select game_... game" />
-                <marker date="1519568087465" expanded="true" signature="471:485" ph="select * fro... $" />
-                <marker date="1519568087465" expanded="true" signature="471:506" ph="select * fro... forum" />
-                <marker date="1519568087465" expanded="true" signature="471:507" ph="select * fro... forum" />
-                <marker date="1519568087465" expanded="true" signature="576:590" ph="select * fro... forum" />
-                <marker date="1519568087465" expanded="true" signature="576:639" ph="select * fro... $" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="like_visit.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/like_visit.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="50" lean-forward="false" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
-              <folding>
-                <marker date="1519829132432" expanded="true" signature="164:209" ph="update user... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="game" pinned="false" current-in-tab="false">
-        <entry file="das://table:/f9f42aa3/dd98ecd3-811b-409e-a046-c445e2027add/bbs.game">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sign_in" pinned="false" current-in-tab="false">
-        <entry file="das://table:/f9f42aa3/dd98ecd3-811b-409e-a046-c445e2027add/bbs.sign_in">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show_forum.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/show_forum.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding>
-                <marker date="1521303158327" expanded="true" signature="3785:3815" ph="select (sele... " />
-                <marker date="1521303158327" expanded="true" signature="4359:4570" ph="select (sele... " />
-                <marker date="1521303158327" expanded="true" signature="4367:4392" ph="select COUNT... user" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forum.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/forum.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-544">
-              <caret line="124" column="50" lean-forward="true" selection-start-line="124" selection-start-column="50" selection-end-line="124" selection-end-column="50" />
-              <folding>
-                <marker date="1520779496020" expanded="true" signature="12860:12943" ph="..." />
-              </folding>
+            <state relative-caret-position="119">
+              <caret line="7" column="32" lean-forward="true" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -260,10 +180,10 @@
         <option value="$PROJECT_DIR$/config/message.php" />
         <option value="$PROJECT_DIR$/config/add_forum_com.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/forum.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/dd98ecd3-811b-409e-a046-c445e2027add/console.sql" />
         <option value="$PROJECT_DIR$/config/like_visit.php" />
         <option value="$PROJECT_DIR$/js/forum.js" />
+        <option value="$PROJECT_DIR$/forum.php" />
       </list>
     </option>
   </component>
@@ -273,10 +193,13 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true">
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="localhost/" />
-      <path value="G:\server\BBS" />
+      <path value="$PROJECT_DIR$" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -286,33 +209,22 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="BBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBS" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="BBS" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBS" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="sql" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="BBS" type="462c0819:PsiDirectoryNode" />
+              <item name="sql" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -321,28 +233,28 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://G:/server/BBS/config/get_info.php&#10;se&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
-    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://G:/server/BBS/config/get_info.php&#10;se&#9;null&#9;null" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\server\BBS\images" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="G:\server\BBS\css" />
       <recent name="G:\server\BBS\js" />
       <recent name="G:\server\BBS" />
       <recent name="G:\server\BBS\images" />
       <recent name="G:\server\BBS\config" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\server\BBS\images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -356,9 +268,6 @@
         </RuleState>
       </list>
     </option>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -434,11 +343,15 @@
       <workItem from="1519389912138" duration="730000" />
       <workItem from="1519391078189" duration="796000" />
       <workItem from="1521337721977" duration="119000" />
+      <workItem from="1532588171362" duration="61000" />
+      <workItem from="1532588391721" duration="79000" />
+      <workItem from="1532588762694" duration="67000" />
+      <workItem from="1532589144616" duration="230000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="397778000" />
+    <option name="totallyTimeSpent" value="398215000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -450,32 +363,33 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <layout>
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16565809" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20801815" sideWeight="0.49356914" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20045386" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14145234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15885022" sideWeight="0.50643086" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6688103" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="数据库" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18456884" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info anchor="bottom" id="TODO" order="12" weight="0.32872504" />
+      <window_info anchor="bottom" id="调试" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" weight="0.32872504" />
+      <window_info anchor="bottom" id="Database Changes" order="13" weight="0.32872504" />
+      <window_info anchor="bottom" id="Version Control" order="2" />
+      <window_info anchor="bottom" id="运行" order="4" />
+      <window_info anchor="bottom" id="Terminal" order="3" weight="0.32872504" />
+      <window_info anchor="right" id="Remote Host" order="4" weight="0.16490166" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49356914" weight="0.21558245" />
+      <window_info anchor="bottom" id="Docker" order="5" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="5" weight="0.20045386" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.14145234" />
+      <window_info id="Favorites" order="0" sideWeight="0.50643086" side_tool="true" weight="0.15885022" />
+      <window_info anchor="bottom" id="找到" order="13" weight="0.329582" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Run" order="8" />
+      <window_info anchor="bottom" id="Find" order="7" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
+      <window_info anchor="right" id="数据库" order="0" visible="true" weight="0.18456884" />
+      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
+      <window_info anchor="bottom" id="Database Console" order="13" weight="0.6688103" />
+      <window_info anchor="bottom" id="Message" order="6" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -495,10 +409,9 @@
       </breakpoints>
       <option name="time" value="15" />
     </breakpoint-manager>
-    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="das://table:/f9f42aa3/dd98ecd3-811b-409e-a046-c445e2027add/bbs.forum">
+    <entry file="das://dd98ecd3-811b-409e-a046-c445e2027add/schema/bbs/table/forum">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
@@ -507,83 +420,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/forum.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="64" lean-forward="false" selection-start-line="27" selection-start-column="64" selection-end-line="27" selection-end-column="64" />
+        <state relative-caret-position="476">
+          <caret line="28" column="64" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
           <folding>
-            <marker date="1519568087465" expanded="true" signature="297:334" ph="select game_... game" />
-            <marker date="1519568087465" expanded="true" signature="471:485" ph="select * fro... $" />
-            <marker date="1519568087465" expanded="true" signature="471:506" ph="select * fro... forum" />
-            <marker date="1519568087465" expanded="true" signature="471:507" ph="select * fro... forum" />
-            <marker date="1519568087465" expanded="true" signature="576:590" ph="select * fro... forum" />
-            <marker date="1519568087465" expanded="true" signature="576:639" ph="select * fro... $" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/like_visit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="50" lean-forward="false" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
-          <folding>
-            <marker date="1519829132432" expanded="true" signature="164:209" ph="update user... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/f9f42aa3/dd98ecd3-811b-409e-a046-c445e2027add/bbs.game">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/f9f42aa3/dd98ecd3-811b-409e-a046-c445e2027add/bbs.sign_in">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/show_forum.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <marker date="1521303158327" expanded="true" signature="3785:3815" ph="select (sele... " />
-            <marker date="1521303158327" expanded="true" signature="4359:4570" ph="select (sele... " />
-            <marker date="1521303158327" expanded="true" signature="4367:4392" ph="select COUNT... user" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/forum.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2006">
-          <caret line="118" column="130" lean-forward="false" selection-start-line="118" selection-start-column="130" selection-end-line="118" selection-end-column="130" />
-          <folding>
-            <marker date="1520779496020" expanded="true" signature="12860:12943" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/f9f42aa3/dd98ecd3-811b-409e-a046-c445e2027add/bbs.forum">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forum.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="28" column="64" lean-forward="false" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
-          <folding>
-            <marker date="1519568087465" expanded="true" signature="297:334" ph="select game_... game" />
-            <marker date="1519568087465" expanded="true" signature="471:485" ph="select * fro... $" />
-            <marker date="1519568087465" expanded="true" signature="471:506" ph="select * fro... forum" />
-            <marker date="1519568087465" expanded="true" signature="471:507" ph="select * fro... forum" />
-            <marker date="1519568087465" expanded="true" signature="576:590" ph="select * fro... forum" />
-            <marker date="1519568087465" expanded="true" signature="576:639" ph="select * fro... $" />
+            <marker date="1532589285581" expanded="true" signature="297:334" ph="select game_... game" />
+            <marker date="1532589285581" expanded="true" signature="471:485" ph="select * fro... $" />
+            <marker date="1532589285581" expanded="true" signature="471:506" ph="select * fro... forum" />
+            <marker date="1532589285581" expanded="true" signature="471:507" ph="select * fro... forum" />
+            <marker date="1532589285581" expanded="true" signature="576:590" ph="select * fro... forum" />
+            <marker date="1532589285581" expanded="true" signature="576:639" ph="select * fro... $" />
           </folding>
         </state>
       </provider>
@@ -591,7 +436,143 @@
     <entry file="file://$PROJECT_DIR$/config/like_visit.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
-          <caret line="32" column="50" lean-forward="false" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
+          <caret line="32" column="50" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
+          <folding>
+            <marker date="1519829132432" expanded="true" signature="164:209" ph="update user... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://dd98ecd3-811b-409e-a046-c445e2027add/schema/bbs/table/game">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://dd98ecd3-811b-409e-a046-c445e2027add/schema/bbs/table/sign_in">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/show_forum.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <marker date="1521365224204" expanded="true" signature="3782:3812" ph="select (sele... " />
+            <marker date="1521365224204" expanded="true" signature="4356:4567" ph="select (sele... " />
+            <marker date="1521365224204" expanded="true" signature="4364:4389" ph="select COUNT... user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/forum.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2346">
+          <caret line="138" column="51" selection-start-line="138" selection-start-column="51" selection-end-line="138" selection-end-column="51" />
+          <folding>
+            <marker date="1521645157535" expanded="true" signature="12860:12943" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://dd98ecd3-811b-409e-a046-c445e2027add/schema/bbs/table/forum">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="64" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
+          <folding>
+            <marker date="1532589285581" expanded="true" signature="297:334" ph="select game_... game" />
+            <marker date="1532589285581" expanded="true" signature="471:485" ph="select * fro... $" />
+            <marker date="1532589285581" expanded="true" signature="471:506" ph="select * fro... forum" />
+            <marker date="1532589285581" expanded="true" signature="471:507" ph="select * fro... forum" />
+            <marker date="1532589285581" expanded="true" signature="576:590" ph="select * fro... forum" />
+            <marker date="1532589285581" expanded="true" signature="576:639" ph="select * fro... $" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/like_visit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="50" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
+          <folding>
+            <marker date="1519829132432" expanded="true" signature="164:209" ph="update user... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://dd98ecd3-811b-409e-a046-c445e2027add/schema/bbs/table/game">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://dd98ecd3-811b-409e-a046-c445e2027add/schema/bbs/table/sign_in">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/show_forum.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <marker date="1521365224204" expanded="true" signature="3782:3812" ph="select (sele... " />
+            <marker date="1521365224204" expanded="true" signature="4356:4567" ph="select (sele... " />
+            <marker date="1521365224204" expanded="true" signature="4364:4389" ph="select COUNT... user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/forum.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2346">
+          <caret line="138" column="51" lean-forward="true" selection-start-line="138" selection-start-column="51" selection-end-line="138" selection-end-column="51" />
+          <folding>
+            <marker date="1521645157535" expanded="true" signature="12860:12943" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/f9f42aa3/dd98ecd3-811b-409e-a046-c445e2027add/bbs.forum">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="64" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
+          <folding>
+            <marker date="1532589285581" expanded="true" signature="297:334" ph="select game_... game" />
+            <marker date="1532589285581" expanded="true" signature="471:485" ph="select * fro... $" />
+            <marker date="1532589285581" expanded="true" signature="471:506" ph="select * fro... forum" />
+            <marker date="1532589285581" expanded="true" signature="471:507" ph="select * fro... forum" />
+            <marker date="1532589285581" expanded="true" signature="576:590" ph="select * fro... forum" />
+            <marker date="1532589285581" expanded="true" signature="576:639" ph="select * fro... $" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/like_visit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="50" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
           <folding>
             <marker date="1519829132432" expanded="true" signature="164:209" ph="update user... " />
           </folding>
@@ -615,22 +596,233 @@
     <entry file="file://$PROJECT_DIR$/config/show_forum.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
           <folding>
-            <marker date="1521303158327" expanded="true" signature="3785:3815" ph="select (sele... " />
-            <marker date="1521303158327" expanded="true" signature="4359:4570" ph="select (sele... " />
-            <marker date="1521303158327" expanded="true" signature="4367:4392" ph="select COUNT... user" />
+            <marker date="1521365224204" expanded="true" signature="3782:3812" ph="select (sele... " />
+            <marker date="1521365224204" expanded="true" signature="4356:4567" ph="select (sele... " />
+            <marker date="1521365224204" expanded="true" signature="4364:4389" ph="select COUNT... user" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/forum.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-544">
+        <state relative-caret-position="2108">
+          <caret line="124" column="50" selection-start-line="124" selection-start-column="50" selection-end-line="124" selection-end-column="50" />
+          <folding>
+            <marker date="1521645157535" expanded="true" signature="12860:12943" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/f9f42aa3/dd98ecd3-811b-409e-a046-c445e2027add/bbs.forum">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="64" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
+          <folding>
+            <marker date="1532589285581" expanded="true" signature="297:334" ph="select game_... game" />
+            <marker date="1532589285581" expanded="true" signature="471:485" ph="select * fro... $" />
+            <marker date="1532589285581" expanded="true" signature="471:506" ph="select * fro... forum" />
+            <marker date="1532589285581" expanded="true" signature="471:507" ph="select * fro... forum" />
+            <marker date="1532589285581" expanded="true" signature="576:590" ph="select * fro... forum" />
+            <marker date="1532589285581" expanded="true" signature="576:639" ph="select * fro... $" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/like_visit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="50" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
+          <folding>
+            <marker date="1519829132432" expanded="true" signature="164:209" ph="update user... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/f9f42aa3/dd98ecd3-811b-409e-a046-c445e2027add/bbs.game">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/f9f42aa3/dd98ecd3-811b-409e-a046-c445e2027add/bbs.sign_in">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/show_forum.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <marker date="1521365224204" expanded="true" signature="3782:3812" ph="select (sele... " />
+            <marker date="1521365224204" expanded="true" signature="4356:4567" ph="select (sele... " />
+            <marker date="1521365224204" expanded="true" signature="4364:4389" ph="select COUNT... user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/forum.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2108">
           <caret line="124" column="50" lean-forward="true" selection-start-line="124" selection-start-column="50" selection-end-line="124" selection-end-column="50" />
           <folding>
-            <marker date="1520779496020" expanded="true" signature="12860:12943" ph="..." />
+            <marker date="1521645157535" expanded="true" signature="12860:12943" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/f9f42aa3/dd98ecd3-811b-409e-a046-c445e2027add/bbs.forum">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="64" selection-start-line="27" selection-start-column="64" selection-end-line="27" selection-end-column="64" />
+          <folding>
+            <marker date="1532589285581" expanded="true" signature="297:334" ph="select game_... game" />
+            <marker date="1532589285581" expanded="true" signature="471:485" ph="select * fro... $" />
+            <marker date="1532589285581" expanded="true" signature="471:506" ph="select * fro... forum" />
+            <marker date="1532589285581" expanded="true" signature="471:507" ph="select * fro... forum" />
+            <marker date="1532589285581" expanded="true" signature="576:590" ph="select * fro... forum" />
+            <marker date="1532589285581" expanded="true" signature="576:639" ph="select * fro... $" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/like_visit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+          <folding>
+            <marker date="1519829132432" expanded="true" signature="164:209" ph="update user... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/f9f42aa3/dd98ecd3-811b-409e-a046-c445e2027add/bbs.game">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/f9f42aa3/dd98ecd3-811b-409e-a046-c445e2027add/bbs.sign_in">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/show_forum.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <marker date="1521365224204" expanded="true" signature="3782:3812" ph="select (sele... " />
+            <marker date="1521365224204" expanded="true" signature="4356:4567" ph="select (sele... " />
+            <marker date="1521365224204" expanded="true" signature="4364:4389" ph="select COUNT... user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/forum.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2006">
+          <caret line="118" column="130" selection-start-line="118" selection-start-column="130" selection-end-line="118" selection-end-column="130" />
+          <folding>
+            <marker date="1521645157535" expanded="true" signature="12860:12943" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/f9f42aa3/dd98ecd3-811b-409e-a046-c445e2027add/bbs.forum">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forum.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+          <folding>
+            <marker date="1532589285581" expanded="true" signature="297:334" ph="select game_... game" />
+            <marker date="1532589285581" expanded="true" signature="471:485" ph="select * fro... $" />
+            <marker date="1532589285581" expanded="true" signature="471:506" ph="select * fro... forum" />
+            <marker date="1532589285581" expanded="true" signature="471:507" ph="select * fro... forum" />
+            <marker date="1532589285581" expanded="true" signature="576:590" ph="select * fro... forum" />
+            <marker date="1532589285581" expanded="true" signature="576:639" ph="select * fro... $" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/like_visit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="50" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
+          <folding>
+            <marker date="1519829132432" expanded="true" signature="164:209" ph="update user... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/f9f42aa3/dd98ecd3-811b-409e-a046-c445e2027add/bbs.game">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/f9f42aa3/dd98ecd3-811b-409e-a046-c445e2027add/bbs.sign_in">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/show_forum.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <marker date="1521365224204" expanded="true" signature="3782:3812" ph="select (sele... " />
+            <marker date="1521365224204" expanded="true" signature="4356:4567" ph="select (sele... " />
+            <marker date="1521365224204" expanded="true" signature="4364:4389" ph="select COUNT... user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/forum.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="135" column="71" selection-start-line="135" selection-start-column="71" selection-end-line="135" selection-end-column="71" />
+          <folding>
+            <marker date="1521645157535" expanded="true" signature="12860:12943" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bottom.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="32" lean-forward="true" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
         </state>
       </provider>
     </entry>

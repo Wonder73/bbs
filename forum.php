@@ -30,7 +30,6 @@
         <li>帖子数：<span><?php echo $count_forum?></span></li>
     </ul>
 </div><!--forum_top-->
-
 <!--主体内容-->
 <div class="forum_body document-width">
     <div class="forum_body-left">
